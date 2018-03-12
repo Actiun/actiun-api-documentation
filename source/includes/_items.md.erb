@@ -1,0 +1,366 @@
+# Productos o Servicios
+
+Los productos o servicios representan lo que tu negocios vende y/o compra.
+
+Se considera a los productos como algo que puede ser tangible y que tienes disponible a la venta. Además que este puede tener un inventario disponible en tu negocio. Todos los productos debener tener una unidad de medida como (piezas, centimetros, litros, metros, etc.), una cantidad incial de productos disponbles (en caso que desees llevar un control del inventairo del producto) y el costo unitario.
+
+Por otro lado los servicios contiene casi la misma información pero no se controla el inventario.
+
+## Objeto Producto o Servicio
+
+Un producto o servicio contiene los siguientes atributos:
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Atributo<th/>
+      <th>Descripción<th/>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">
+        <code>id</code> <br> integer
+      <td/>
+      <td>
+        Identificador único que representa un producto o servicio.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>name</code> <br> string
+      <td/>
+      <td>
+        Nombre del producto o servicio.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>description</code> <br> text
+      <td/>
+      <td>
+        Descripción del producto o servicio.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>price</code> <br> decimal
+      <td/>
+      <td>
+        El precio producto o servicio.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>units</code> <br> string
+      <td/>
+      <td>
+        La unidad de medida relacionada al producto o servicio.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>sku</code> <br> string
+      <td/>
+      <td>
+        Código único que consiste en letras y números que identifican características de cada producto, como su fabricación, marca, estilo, color y talla.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>inventory</code> <br> object
+      <td/>
+      <td>
+        La información relacionada al inventario del producto.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>taxes</code> <br> array
+      <td/>
+      <td>
+        La información de los impuestos relacionados del producto o servicio.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>product_key</code> <br> object
+      <td/>
+      <td>
+        Indica la clave del producto o servicio basada en el catálogo del SAT de productos o servicios.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>unit_key</code> <br> object
+      <td/>
+      <td>
+        Indica la clave de unidad de medida del producto o servicio basada en el catálogo del SAT de medidas.
+      <td/>
+    </tr>
+  </tbody>
+</table>
+
+## Consultar un Producto o Servicio
+
+```shell
+# Ejemplo de llamada
+curl "<%= endpoint_url %>/items/1" \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json"
+```
+
+> Resultado
+
+```json
+{
+  "item": {
+    "id": 1,
+    "name": "Bolígrafo de Punta Fina",
+    "description": "Bolígrafo de Punta Fina Color Rojo Marca Patito",
+    "price": 10.0,
+    "units": "Pieza",
+    "sku": "",
+    "discount": null,
+    "inventory": {},
+    "taxes": [
+      {
+        "id": 1,
+        "percentage": 16,
+        "name": "IVA",
+        "description": null,
+        "category": "federal"
+      }
+    ],
+    "product_key": {
+      "id": 26865,
+      "name": "Bolígrafos",
+      "value": "44121701"
+    },
+    "unit_key": {
+      "id": 1730,
+      "name": "Pieza",
+      "value": "H87"
+    }
+  }
+}
+```
+
+Endpoint que permite consultar un producto o servicio registrado.
+
+### HTTP Request
+
+`GET <%= endpoint_url %>/items/:id`
+
+### URL Parameters
+
+Parámetro | Descripción
+--------- | -----------
+id | El identificador del producto o servicio que deseas obtener la información.
+
+
+## Lista de Productos o Servicios
+
+```shell
+# Ejemplo de llamada
+curl "<%= endpoint_url %>/items" \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json"
+```
+
+> Resultado
+
+```json
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Bolígrafo de Punta Fina",
+      "description": "Bolígrafo de Punta Fina Color Rojo Marca Patito",
+      "price": 10.0,
+      "units": "Pieza",
+      "sku": "",
+      "discount": null,
+      "inventory": {},
+      "taxes": [
+        {
+          "id": 1,
+          "percentage": 16,
+          "name": "IVA",
+          "description": null,
+          "category": "federal"
+        }
+      ],
+      "product_key": {
+        "id": 26865,
+        "name": "Bolígrafos",
+        "value": "44121701"
+      },
+      "unit_key": {
+        "id": 1730,
+        "name": "Pieza",
+        "value": "H87"
+      }
+    }
+  ]
+}
+```
+
+Endpoint que permite consultar un listado de los contactos registrados.
+
+### HTTP Request
+
+`GET <%= endpoint_url %>/items`
+
+### Query Parameters
+
+Parámetro | Tipo | Descripción
+--------- | ------- | -----------
+query | string | Cadena de texto que se quiere utilizar para buscar los productos o servicios que en el nombre o descripción contienen dicho texto
+
+## Crear Producto o Servicio
+
+```shell
+# Ejemplo de llamada básica
+curl "<%= endpoint_url %>/items" \
+  -X POST \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json" \
+  -d '{
+   "name": "Lápiz No. 2",
+   "price": 8.50,
+   "product_key_code": "44121706",
+   "unit_key_code": "H87"
+  }'
+```
+
+> Resultado
+
+```json
+{
+  "items": {
+    "id": 50,
+    "name": "Lápiz No. 2",
+    "description": null,
+    "price": 8.5,
+    "units": "Pieza",
+    "sku": null,
+    "discount": null,
+    "inventory": {},
+    "taxes": [],
+    "images": [],
+    "product_key": {
+      "id": 26870,
+      "name": "Lápices de madera",
+      "value": "44121706"
+    },
+    "unit_key": {
+      "id": 1730,
+      "name": "Pieza",
+      "value": "H87"
+    }
+  }
+}
+```
+
+Endpoint que permite crear un nuevo contacto.
+
+### HTTP Request
+
+`POST <%= endpoint_url %>/items`
+
+### Query Parameters
+
+Parámetro | Tipo | Requerido | Descripción
+--------- | ------- | ------- | -----------
+name | string | requerido | Nombre del producto o servicio.
+descripton | string | opcional | descripción del producto o servicio.
+price | decimal | requerido | El precio de venta del producto o servicio.
+units | string | requerido | La unidad de medida relacionada al producto o servicio.
+sku | string | opcional | Código único que consiste en letras y números que identifican características de cada producto, como su fabricación, marca, estilo, color y talla.
+product_key_code | string | requerido | Representa el número de la clave de producto o ClaveProdServ que se encuentra en el catálogo del SAT.
+unit_key_code | string | requerido | Representa el número de la clave de las unidades de producto o ClaveUnidad que se encuentra en el catálogo del SAT.
+
+## Editar Producto o Servicio
+
+```shell
+curl <%= endpoint_url %>/items/50 \
+    -X PUT \
+    -H "Authorization: {LLAVE_PRIVADA}" \
+    -H "Content-Type: application/json" \
+    -d '{
+  "description": "Lapiz de Madera",
+  "price": 9.5"
+}'
+```
+
+> Resultado
+
+```json
+{
+  "item": {
+    "id": 50,
+    "name": "Lápiz No. 2",
+    "description": "Lapiz No.3 de Madera",
+    "price": 10,
+    "units": "Pieza",
+    "sku": null,
+    "discount": null,
+    "inventory": {},
+    "taxes": [],
+    "product_key": {
+      "id": 26870,
+      "name": "Lápices de madera",
+      "value": "44121706"
+    },
+    "unit_key": {
+      "id": 1730,
+      "name": "Pieza",
+      "value": "H87"
+    }
+  }
+}
+```
+Endpoint que permite editar un contacto existente.
+
+### HTTP Request
+
+`PUT <%= endpoint_url %>/items/:id`
+
+### URL Parameters
+
+Parámetro | Descripción
+--------- | -----------
+id | El identificador del producto o servicio que deseas actualizar
+
+### Query Parameters
+
+Parámetro | Tipo | Requerido | Descripción
+--------- | ------- | ------- | -----------
+name | string | requerido | Nombre del producto o servicio.
+descripton | string | opcional | descripción del producto o servicio.
+price | decimal | requerido | El precio de venta del producto o servicio.
+units | string | requerido | La unidad de medida relacionada al producto o servicio.
+sku | string | opcional | Código único que consiste en letras y números que identifican características de cada producto, como su fabricación, marca, estilo, color y talla.
+product_key_code | string | requerido | Representa el número de la clave de producto o ClaveProdServ que se encuentra en el catálogo del SAT.
+unit_key_code | string | requerido | Representa el número de la clave de las unidades de producto o ClaveUnidad que se encuentra en el catálogo del SAT.
+
+## Eliminar Producto o Servicio
+
+```shell
+curl "<%= endpoint_url %>/items/50" \
+  -X DELETE
+  -H "Authorization: {LLAVE_PRIVADA}"
+```
+
+Endpoint que te permite borrar un producto o servicio que este relacionada a la empresa.
+
+### HTTP Request
+
+`DELETE <%= endpoint_url %>/items/:id`
+
+### URL Parameters
+
+Parámetro | Descripción
+--------- | -----------
+id | El identificador del producto o servicio que deseas eliminar.

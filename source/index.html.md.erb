@@ -2,13 +2,14 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
+  - shell: cURL
 
 toc_footers:
   - <a href='https://app.actiun.com'>Crea Tu Cuenta en Actiun</a>
 
 includes:
   - contacts
+  - items
   - errors
 
 search: true
@@ -25,7 +26,7 @@ En esta documentación encontraras los endpoints con los cuales podrás interact
 
 ## Petición
 
-El URL base para todos los recursos es: https://api.actiun.com
+El URL base para todos los recursos es: <%= endpoint_url %>
 
 ## Páginación
 
@@ -41,7 +42,7 @@ Si el parámetro page es omitido se entegará la primer página disponible usand
 
 
 ```shell
-curl "https://api.actiun.com/clients" \
+curl "<%= endpoint_url %>/clients" \
   -H "Authorization: {LLAVE_PRIVADA}"
 ```
 

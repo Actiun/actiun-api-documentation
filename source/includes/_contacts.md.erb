@@ -6,23 +6,94 @@ Los contactos representan los clientes y proveedores los cuales se encuentran as
 
 Un contacto contiene los siguientes atributos:
 
-Atributo | Tipo | Descripción
---------- | ------- | -----------
-`id` | integer | Identificador único que representa un contacto.
-`name` | string | Nombre del contacto.
-`identification` | string | Número de identificación utilizado para la facturación. Ej. RFC, cédula, etc.
-`billing_address_email` | string | El correo o correos electrónicos a donde se envian las facturas. En caso de tener varios correos deben ir separados por una coma.
-`alias` | string | Sobrenombre que se le desee agregar para futuras referencias de busquedar por nombre.
-`bill_with_parent` | boolean | Si el contacto tiene una cuenta padre, se desea facturar con la información fiscal y dirección de dicho contacto.
-`bill_with_shipping`| string | En caso de que el contacto tenga una dirección fisica y se desee utilizar la misma direccón para su facturación.
-`billing_address` | object | La dirección fiscal del contacto.
-`shipping_address` | object | La dirección física del contacto.
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Atributo<th/>
+      <th>Descripción<th/>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">
+        <code>id</code> <br> integer
+      <td/>
+      <td>
+        Identificador único que representa un contacto.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>name</code> <br> string
+      <td/>
+      <td>
+        Nombre del contacto.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>identification</code> <br> string
+      <td/>
+      <td>
+        Número de identificación utilizado para la facturación. Ej. RFC, cédula, etc.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>billing_address_email</code> <br> string
+      <td/>
+      <td>
+        El correo o correos electrónicos a donde se envian las facturas. En caso de tener varios correos deben ir separados por una coma.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>alias</code> <br> string
+      <td/>
+      <td>
+        Sobrenombre que se le desee agregar para futuras referencias de busquedar por nombre.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>bill_with_parent</code> <br> boolean
+      <td/>
+      <td>
+        Si el contacto tiene una cuenta padre, se desea facturar con la información fiscal y dirección de dicho contacto.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>bill_with_shipping</code> <br> boolean
+      <td/>
+      <td>
+        En caso de que el contacto tenga una dirección fisica y se desee utilizar la misma direccón para su facturación.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>billing_address</code> <br> object
+      <td/>
+      <td>
+        La dirección fiscal del contacto.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>shipping_address</code> <br> object
+      <td/>
+      <td>
+        La dirección física del contacto.
+      <td/>
+    </tr>
+  </tbody>
+</table>
 
 ## Consultar un Contacto
 
 ```shell
 # Ejemplo de llamada
-curl "https://api.actiun.com/contacts/1" \
+curl "<%= endpoint_url %>/contacts/1" \
   -H "Authorization: {LLAVE_PRIVADA}" \
   -H "Content-Type: application/json"
 ```
@@ -72,7 +143,7 @@ Endpoint que permite consultar un contacto registrado en la aplicación.
 
 ### HTTP Request
 
-`GET https://api.actiun.com/contacts/:id`
+`GET <%= endpoint_url %>/contacts/:id`
 
 ### URL Parameters
 
@@ -85,7 +156,7 @@ id | El identificador del contacto que deseas obtener la información.
 
 ```shell
 # Ejemplo de llamada
-curl "https://api.actiun.com/contacts" \
+curl "<%= endpoint_url %>/contacts" \
   -H "Authorization: {LLAVE_PRIVADA}" \
   -H "Content-Type: application/json"
 ```
@@ -93,27 +164,29 @@ curl "https://api.actiun.com/contacts" \
 > Resultado
 
 ```json
-contacts: [
-  {
-    "id": 1,
-    "name": "ACME SA DE CV",
-    "identification": "ACM120412I11",
-    "alias" : ""
-  },
-  {
-    "id": 2,
-    "name": "ACME SA DE CV",
-    "identification": "ACM120412I11",
-    "alias" : ""
-  }
-]
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "ACME SA DE CV",
+      "identification": "ACM120412I11",
+      "alias" : ""
+    },
+    {
+      "id": 2,
+      "name": "ACME SA DE CV",
+      "identification": "ACM120412I11",
+      "alias" : ""
+    }
+  ]
+}
 ```
 
 Endpoint que permite consultar un listado de los contactos registrados.
 
 ### HTTP Request
 
-`GET https://api.actiun.com/contacts`
+`GET <%= endpoint_url %>/contacts`
 
 ### Query Parameters
 
@@ -125,14 +198,14 @@ query | string | Cadena de texto que se quiere utilizar para buscar los contacto
 
 ```shell
 # Ejemplo de llamada básica
-curl "https://api.actiun.com/contacts" \
+curl "<%= endpoint_url %>/contacts" \
   -X POST \
   -H "Authorization: {LLAVE_PRIVADA}" \
   -H "Content-Type: application/json" \
   -d '{
    "name": "Empresa Patito SA de CV",
    "identification": "ACM131115G35"
- }'
+}'
 ```
 
 > Resultado
@@ -163,12 +236,20 @@ Endpoint que permite crear un nuevo contacto.
 
 ### HTTP Request
 
-`POST https://api.actiun.com/contacts`
+`POST <%= endpoint_url %>/contacts`
+
+### Query Parameters
+
+Parámetro | Tipo | Requerido | Descripción
+--------- | ------- | ------- | -----------
+name | string | requerido | Nombre del Contacto.
+identification | string | requerido | Número de identificación utilizado para la facturación. Ej. RFC, cédula, etc.
+
 
 ## Editar Contacto
 
 ```shell
-curl https://api.actiun.com/contacts/50 \
+curl <%= endpoint_url %>/contacts/50 \
     -X PUT \
     -H "Authorization: {LLAVE_PRIVADA}" \
     -H "Content-Type: application/json" \
@@ -205,7 +286,7 @@ Endpoint que permite editar un contacto existente.
 
 ### HTTP Request
 
-`PUT https://api.actiun.com/contacts/:id`
+`PUT <%= endpoint_url %>/contacts/:id`
 
 ### URL Parameters
 
@@ -218,7 +299,7 @@ id | El identificador del contacto que deseas actualizar
 ## Eliminar Contacto
 
 ```shell
-curl "https://api.actiun.com/contacts/50" \
+curl "<%= endpoint_url %>/contacts/50" \
   -X DELETE
   -H "Authorization: {LLAVE_PRIVADA}"
 ```
@@ -227,7 +308,7 @@ Endpoint que te permite borrar un contacto. Si el cliente cuenta con informació
 
 ### HTTP Request
 
-`DELETE https://api.actiun.com/contacts/:id`
+`DELETE <%= endpoint_url %>/contacts/:id`
 
 ### URL Parameters
 

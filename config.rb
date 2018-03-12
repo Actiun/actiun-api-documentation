@@ -54,6 +54,10 @@ set :port, 4567
 
 helpers do
   require './lib/toc_data.rb'
+
+  def endpoint_url
+    "https://api.actiun.com"
+  end
 end
 
 # Active livereload
