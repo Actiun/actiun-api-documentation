@@ -362,20 +362,87 @@ Campo por el cual se desea ordenar, las opciones posibles son id, name, date, du
 curl "<%= endpoint_url %>/invoices" \
   -X POST \
   -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Cache-Control: no-cache" \
   -H "Content-Type: application/json" \
-  -d '{
-   "name": "Lápiz No. 2",
-   "price": 8.50,
-   "product_key_code": "44121706",
-   "unit_key_code": "H87"
-  }'
+  -H "Postman-Token: 5e2c8505-26ce-4b1a-bb59-2cc58154bee1" \
+  -d '{ "invoice": {
+	"date": "2018-03-12",
+	"due_offset_days": "30",
+	"client_id": 10819,
+	"payment_method_code": "wire-transfer",
+	"cfdi_use_code": "G03",
+	"line_items": [
+		{"item_id": 2251, "price": 100, "quantity": 5, "taxes": [{"tax_id": 1}] }
+	]
+}}'
+
 ```
 
 > Resultado
 
 ```json
 {
-
+  "invoice": {
+    "id": 74787,
+    "status": "opened",
+    "prefix": "A",
+    "number": 13814,
+    "date": "2018-03-12",
+    "due_at": "2018-04-11",
+    "due_offset_days": "30",
+    "kind": "income",
+    "subtotal": 500,
+    "total": 580,
+    "payment_method": "Tarjeta de crédito",
+    "account_number": null,
+    "currency": {
+      "code": "MXN",
+      "symbol": "$",
+      "exchange_rate": 1
+    },
+    "created_at": "2018-03-14T14:19:47.218-06:00",
+    "updated_at": "2018-03-14T14:19:53.544-06:00",
+    "attachments": [],
+    "description": null,
+    "line_items": [
+      {
+        "id": 166822,
+        "name": "Servicios de organización de transportes",
+        "description": null,
+        "price": 100,
+        "quantity": 5,
+        "discount": 0,
+        "subtotal": 500,
+        "units": "Actividad",
+        "item_id": 2251,
+        "taxes": [
+          {
+            "id": 1,
+            "percentage": 16,
+            "name": "IVA",
+            "description": null,
+            "category": "federal"
+          }
+        ],
+        "retentions": []
+      }
+    ],
+    "stamp": null,
+    "client": {
+        "id": 10819,
+        "name": "ACME SA DE CV",
+        "identification": "XEXX010101000",
+        "billing_address_email": "facturacion@acme.com",
+        "alias": null,
+        "bill_with_parent": false,
+        "bill_with_shipping": true,
+        "depth": 0
+    },
+    "cfdi_use": {
+        "name": "Gastos en general",
+        "value": "G03"
+    }
+  }
 }
 ```
 

@@ -202,10 +202,10 @@ curl "<%= endpoint_url %>/contacts" \
   -X POST \
   -H "Authorization: {LLAVE_PRIVADA}" \
   -H "Content-Type: application/json" \
-  -d '{
+  -d '{ "contact": {
    "name": "Empresa Patito SA de CV",
    "identification": "ACM131115G35"
-}'
+}}'
 ```
 
 > Resultado
@@ -253,10 +253,10 @@ curl <%= endpoint_url %>/contacts/50 \
     -X PUT \
     -H "Authorization: {LLAVE_PRIVADA}" \
     -H "Content-Type: application/json" \
-    -d '{
+    -d '{ "contact": {
   "alias": "Cuack cuack",
   "billing_address_email": "macpato@millonario.com"
-}'
+}}'
 ```
 
 > Resultado

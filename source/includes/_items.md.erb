@@ -226,12 +226,12 @@ curl "<%= endpoint_url %>/items" \
   -X POST \
   -H "Authorization: {LLAVE_PRIVADA}" \
   -H "Content-Type: application/json" \
-  -d '{
+  -d '{ "item": {
    "name": "Lápiz No. 2",
    "price": 8.50,
    "product_key_code": "44121706",
    "unit_key_code": "H87"
-  }'
+  }}'
 ```
 
 > Resultado
@@ -288,10 +288,10 @@ curl <%= endpoint_url %>/items/50 \
     -X PUT \
     -H "Authorization: {LLAVE_PRIVADA}" \
     -H "Content-Type: application/json" \
-    -d '{
+    -d '{ "item": {
   "description": "Lapiz de Madera",
   "price": 9.5"
-}'
+}}'
 ```
 
 > Resultado
