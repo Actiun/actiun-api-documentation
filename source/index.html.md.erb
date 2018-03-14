@@ -10,6 +10,7 @@ toc_footers:
 includes:
   - contacts
   - items
+  - invoices
   - errors
 
 search: true
@@ -30,6 +31,29 @@ El URL base para todos los recursos es: <%= endpoint_url %>
 
 ## Páginación
 
+```shell
+# Ejemplo de llamada
+curl --include "<%= endpoint_url %>/invoices?page=5" \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json"
+```
+
+> Resultado
+
+```shell
+HTTP/1.1 200 OK
+Cache-Control: max-age=0, private, must-revalidate
+Content-Type: application/json; charset=utf-8
+Etag: W/"a6cb020fadde98f283d5c30f7d483013"
+Link: <http://api.actiun.com/invoices?page=1>; rel="first",
+  <http://api.actiun.com/invoices?page=4>; rel="prev",
+  <http://api.actiun.com/invoices?page=207>; rel="last",
+  <http://api.actiun.com/invoices?page=6>; rel="next"
+Per-Page: 25
+Total: 5154
+# ...
+```
+
 Todos los endpoints que sean un listado de objetos serán paginados autmaticamente. Cada página constará de `25` registros por página.
 
 Puedes especificar que página deseas acceder utilizando el parametro de `page` en el URL del endpoint.
@@ -37,6 +61,8 @@ Puedes especificar que página deseas acceder utilizando el parametro de `page` 
 `GET /clients?page=2`
 
 Si el parámetro page es omitido se entegará la primer página disponible usando el valor 1.
+
+La información relacionada a la paginación se encuentra disponible en los headers de respuesta.
 
 # Autenticación
 

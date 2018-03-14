@@ -36,7 +36,7 @@ Un producto o servicio contiene los siguientes atributos:
     </tr>
     <tr>
       <td style="text-align: right">
-        <code>description</code> <br> text
+        <code>description</code> <br> string
       <td/>
       <td>
         Descripción del producto o servicio.
@@ -269,7 +269,7 @@ Endpoint que permite crear un nuevo contacto.
 
 `POST <%= endpoint_url %>/items`
 
-### Query Parameters
+### Argumentos
 
 Parámetro | Tipo | Requerido | Descripción
 --------- | ------- | ------- | -----------
@@ -333,7 +333,7 @@ Parámetro | Descripción
 --------- | -----------
 id | El identificador del producto o servicio que deseas actualizar
 
-### Query Parameters
+### Argumentos
 
 Parámetro | Tipo | Requerido | Descripción
 --------- | ------- | ------- | -----------
@@ -352,6 +352,8 @@ curl "<%= endpoint_url %>/items/50" \
   -X DELETE
   -H "Authorization: {LLAVE_PRIVADA}"
 ```
+
+> Resultado (204 No Content)
 
 Endpoint que te permite borrar un producto o servicio que este relacionada a la empresa.
 

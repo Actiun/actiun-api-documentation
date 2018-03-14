@@ -1,0 +1,397 @@
+# Facturas de Venta
+
+Los facturas de venta son los documentos representan las ventas de tu empresa. Las facturas deben estar asociadas a un contacto y deben tener al menos un producto o servicio a facturar.
+
+La factura de venta puede tener solo un estatus a la vez, y los significados son los siguientes:
+
+* <code>drafted</code> - La factura de venta todavía se encuentra en proceso de confirmación.
+* <code>stamping</code> - La factura de venta se esta siendo enviada al SAT para timbrarse.
+* <code>opened</code> - La factura de venta ya fue timbrada, y esta pendiente de ser pagada por su cliente.
+* <code>sent</code> - La factura de venta ya fue timbrada, y esta fue enviada a su cliente. Esto sucede automáticamente al enviar la factura por correo electrónico.
+* <code>viewed</code> - La factura de venta  ya fue timbrada, fue enviada a tu cliente por correo electrónico y este descargo los archivos del PDF, XML o visito la página de la información de la factura.
+* <code>paid</code> - La factura de venta fue marcada como pagada para llevar el registro de que dicho ingreso ya fue efectivamente cobrado.
+* <code>partial</code> - La factura de venta fue marcada como pagada para llevar el registro de que dicho ingreso ya fue parcialmente cobrado y todavía hay un saldo pendiente.
+* <code>voided</code> - La factura de venta fue cancelada y se envia la solicitud de cancelación al SAT.
+
+## Objeto Factura de Venta
+
+Un Factura de Venta contiene los siguientes atributos:
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Atributo<th/>
+      <th>Descripción<th/>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">
+        <code>id</code> <br> integer
+      <td/>
+      <td>
+        Identificador único que representa una factura de venta.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>date</code> <br> date
+      <td/>
+      <td>
+        Fecha de la factura.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>due_at</code> <br> date
+      <td/>
+      <td>
+        Fecha de vencimiento de la factura. Que se calcula utilizando la opción due_offset_days.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>client</code> <br> object
+      <td/>
+      <td>
+        Objeto que contiene la información del cliente asociado a la factura.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>status</code> <br> string
+      <td/>
+      <td>
+        Estado de la factura de venta. Los posibles estatus son los siguientes:
+        <code>drafted</code>,
+        <code>stamping</code>,
+        <code>opened</code>,
+        <code>sent</code>,
+        <code>viewed</code>,
+        <code>paid</code>,
+        <code>partial</code> y
+        <code>voided</code>.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>kind</code> <br> string
+      <td/>
+      <td>
+        Representa si el documento es un ingreso o egreso.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>prefix</code> <br> string
+      <td/>
+      <td>
+        Es la serie que se esta utilizando en la factura de venta.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>number</code> <br> string
+      <td/>
+      <td>
+        Es el número consecutivo que se esta utilizando en la factura de venta.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>description</code> <br> string
+      <td/>
+      <td>
+        Notas de la factura, visibles en el documento impreso o PDF.
+      <td/>
+    </tr>    
+    <tr>
+      <td style="text-align: right">
+        <code>total</code> <br> decimal
+      <td/>
+      <td>
+        El total de la factura.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>total_paid</code> <br> decimal
+      <td/>
+      <td>
+        El saldo pendinte por pagar de la factura.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>cfdi_use</code> <br> object
+      <td/>
+      <td>
+        Datos sobre el uso que le dará al cliente al CFDI de la factura de venta.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>payment_method</code> <br> string
+      <td/>
+      <td>
+        Indica el método de pago de la factura.
+      <td/>
+    </tr>
+      <td style="text-align: right">
+        <code>account_number</code> <br> string
+      <td/>
+      <td>
+        Indica el número de cuenta o tarjeta de pago. Debe tener mínimo 4 caracteres.
+      <td/>
+    </tr>
+    </tr>
+      <td style="text-align: right">
+        <code>currency</code> <br> object
+      <td/>
+      <td>
+        Objeto que contiene la información de la moneda asociada a la factura.
+        <br>
+        El objecto contiene lo siguiente:
+        <ul>
+          <li>currency: Identificador de la divisa basado en el ISO 4217 que se utilizo para generar la factura.</li>
+          <li>symbol: Simboló de la divisa utilizada en la factura..</li>
+          <li>exchange_rate: Tipo de cambio que se utilizo para la factura.</li>
+        </ul>
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>line_items</code> <br> array
+      <td/>
+      <td>
+        Array de las lineas de captura de la factua de venta. Cada linea esta asociada a un producto o servicio previamente registrado en Actiun.
+        <br>
+        Cada objeto contiene los siguientes atributos:
+        <ul>
+          <li>id: Identificador de la línea de captura.</li>
+          <li>name: Nombre del producto o servicio.</li>
+          <li>description: Descripción del producto o servicio.</li>
+          <li>price: Precio de venta del producto o servicio.</li>
+          <li>quantity: Cantidad vendida del producto o servicio.</li>
+          <li>discount: Porcentaje de descuento aplicado al producto.</li>
+          <li>subtotal: Subtotal de la línea de captura (no incluye impuestos).</li>
+          <li>taxes: Array de objetos taxes que indican los impuestos aplicados al producto o servicio al momento de la venta.</li>
+          <li>retentions: Array de objetos retentions que indican las retenciones aplicados al producto o servicio al momento de la venta.</li>
+        </ul>        
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>attachments</code> <br> array
+      <td/>
+      <td>
+        Array de los archivos adjuntos que tenga la factura de venta.
+        <br>
+        Cada objeto contiene los siguientes atributos:
+        <ul>
+          <li>type: Tipo de formato del documento.</li>
+          <li>download_url: La página para descargar el documento.</li>
+        </ul>
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>stamp</code> <br> object
+      <td/>
+      <td>
+        Objeto que contiene la información del timbre fiscal de la factura.
+        <br>
+        El objecto contiene lo siguiente:
+        <ul>
+          <li>sat_uuid: Identificador entregado por el SAT de la factura.</li>
+          <li>sat_certificate_number: Número de certificado del SAT.</li>
+          <li>sat_stamp: Sello del SAT.</li>
+          <li>cfd_stamp: Sello del CFDI.</li>
+          <li>stamped_date: La fecha del timbre en el SAT.</li>
+        </ul>
+      <td/>
+    </tr>
+  </tbody>
+</table>
+
+## Consultar un Factura de Venta
+
+```shell
+# Ejemplo de llamada
+curl "<%= endpoint_url %>/invoices/150" \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json"
+```
+> Resultado
+
+```json
+{
+  "invoice": {
+    "id": 74740,
+    "status": "opened",
+    "prefix": "LOZ",
+    "kind": "income",
+    "number": "13804",
+    "subtotal": 655,
+    "total": 655,
+    "payment_method": "Por definir",
+    "account_number": null,
+    "currency": {
+      "code": "USD",
+      "symbol": "$",
+      "exchange_rate": 18.6574
+    },
+    "created_at": "2018-03-09T16:09:48.314-06:00",
+    "updated_at": "2018-03-09T16:37:48.043-06:00",
+    "attachments": [
+      {
+        "type": "Pdf",
+        "download_url": "http://app.actiun.test/documents/pdf/f898dc15-06a1-4d83-9c9a-c8a127993ff3"
+      },
+      {
+        "type": "Xml",
+        "download_url": "http://app.actiun.test/documents/xml/f898dc15-06a1-4d83-9c9a-c8a127993ff3"
+      }
+    ],
+    "description": null,
+    "line_items": [
+      {
+        "id": 166707,
+        "name": "Servicios de organización de transportes",
+        "description": "WEIGHT SCALING / PESAJE",
+        "price": 100,
+        "quantity": 1,
+        "discount": 0,
+        "subtotal": 100,
+        "units": "Actividad",
+        "item_id": 2251,
+        "taxes": [
+          {
+            "id": 2,
+            "percentage": 0,
+            "name": "IVA",
+            "description": null,
+            "category": "federal"
+          }
+        ],
+        "retentions": []
+      }
+    ],
+    "stamp": {
+      "sat_uuid": "90E59622-FCCC-4838-A792-5916AB8C81AB",
+      "sat_certificate_number": "00001000000403442064",
+      "sat_stamp": "gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng==",
+      "cfd_stamp": "IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg==",
+      "stamped_date": "2018-03-09T16:37:46.000-06:00"
+    },
+    "client": {
+      "id": 10819,
+      "name": "ROTRA AIR & OCEAN B.V.",
+      "identification": "XEXX010101000",
+      "billing_address_email": "rtm.import@rotra.nl",
+      "alias": null,
+      "bill_with_parent": false,
+      "bill_with_shipping": true,
+      "depth": 0
+    },
+    "cfdi_use": {
+      "name": "Gastos en general",
+      "value": "G03"
+    }
+  }
+}
+```
+
+Endpoint que permite consultar una factura de venta registrada.
+
+### HTTP Request
+
+`GET <%= endpoint_url %>/invoices/:id`
+
+### URL Parameters
+
+Parámetro | Descripción
+--------- | -----------
+id | El identificador de la factura de venta que deseas obtener la información.
+
+
+## Lista de Facturas de Venta
+
+```shell
+# Ejemplo de llamada
+curl "<%= endpoint_url %>/invoices" \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json"
+```
+
+> Resultado
+
+```json
+{
+
+}
+```
+
+Endpoint que permite consultar un listado de los contactos registrados.
+
+### HTTP Request
+
+`GET <%= endpoint_url %>/invoices`
+
+### Query Parameters
+
+Parámetro | Tipo | Descripción
+--------- | ------- | -----------
+order_direction | string | Orden ascendente o descendente en el cual se quieren retornar las facturas. Opciones disponibles son DESC o ASC. Por defecto es ASC (ascendente).
+order_field | string | Campo por el cual se desea ordenar las facturas, las opciones posibles son id, date, due_at, status, created_at.
+
+order_direction:
+stringASC
+
+Orden ascendente o descendente en el cual se quieren retornar las facturas. Opciones disponibles son DESC o ASC. Por defecto es ASC (ascendente).
+order_field:
+stringdate
+
+Campo por el cual se desea ordenar, las opciones posibles son id, name, date, dueDate, status.
+
+
+## Crear Factura de Venta
+
+```shell
+# Ejemplo de llamada básica
+curl "<%= endpoint_url %>/invoices" \
+  -X POST \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json" \
+  -d '{
+   "name": "Lápiz No. 2",
+   "price": 8.50,
+   "product_key_code": "44121706",
+   "unit_key_code": "H87"
+  }'
+```
+
+> Resultado
+
+```json
+{
+
+}
+```
+
+Endpoint que permite crear una nueva factura.
+
+### HTTP Request
+
+`POST <%= endpoint_url %>/invoices`
+
+### Query Parameters
+
+Parámetro | Tipo | Requerido | Descripción
+--------- | ------- | ------- | -----------
+client_id | integer | requerido | El identificador del contacto que al cuál se le desea asociar la factura.
+date | date | opcional | Representa la fecha a la factura. Se debe utilizar el formato YYYY-MM-DD. En caso de no especificar se utilizará el día en curso.
+due_offset_days | string | opcional | Representa la fecha de vencimiento a la factura. Esto ayuda a calculate la fecha de vencimiento basado en la fecha de la factura más el número de días de crédito qe se indiquen. Ej. 30
+currency | string | opcional | Representa el tipo de divisa a utilizar en la factura. El valor por defecto es `MXN`. Se deben utilizar los identificadores de divisa según el ISO 4217.
+exchange_rate | decimal | opcional | Representa el tipo de cambio que se utilizo para la factura. Es obligatorio cuando la divisa no es `MXN`.
+type_code | string | opcional | Representa el tipo de factura que se desea emitir. El valor por defecto es `FACT`. Utiliza los siguientes valores: `FACT` - Factura, `ARR` - Recibo de arrendamiento, `DON` - Recibo de donativos, `HON` - Recibo de honorarios.
