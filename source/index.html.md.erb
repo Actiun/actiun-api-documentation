@@ -31,8 +31,9 @@ El URL base para todos los recursos es: <%= endpoint_url %>
 
 ## Páginación
 
+> Ejemplo de llamada
+
 ```shell
-# Ejemplo de llamada
 curl --include "<%= endpoint_url %>/invoices?page=5" \
   -H "Authorization: {LLAVE_PRIVADA}" \
   -H "Content-Type: application/json"

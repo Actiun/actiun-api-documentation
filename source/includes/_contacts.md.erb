@@ -6,93 +6,29 @@ Los contactos representan los clientes y proveedores los cuales se encuentran as
 
 Un contacto contiene los siguientes atributos:
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: right">Atributo<th/>
-      <th>Descripción<th/>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: right">
-        <code>id</code> <br> integer
-      <td/>
-      <td>
-        Identificador único que representa un contacto.
-      <td/>
-    </tr>
-    <tr>
-      <td style="text-align: right">
-        <code>name</code> <br> string
-      <td/>
-      <td>
-        Nombre del contacto.
-      <td/>
-    </tr>
-    <tr>
-      <td style="text-align: right">
-        <code>identification</code> <br> string
-      <td/>
-      <td>
-        Número de identificación utilizado para la facturación. Ej. RFC, cédula, etc.
-      <td/>
-    </tr>
-    <tr>
-      <td style="text-align: right">
-        <code>billing_address_email</code> <br> string
-      <td/>
-      <td>
-        El correo o correos electrónicos a donde se envian las facturas. En caso de tener varios correos deben ir separados por una coma.
-      <td/>
-    </tr>
-    <tr>
-      <td style="text-align: right">
-        <code>alias</code> <br> string
-      <td/>
-      <td>
-        Sobrenombre que se le desee agregar para futuras referencias de busquedar por nombre.
-      <td/>
-    </tr>
-    <tr>
-      <td style="text-align: right">
-        <code>bill_with_parent</code> <br> boolean
-      <td/>
-      <td>
-        Si el contacto tiene una cuenta padre, se desea facturar con la información fiscal y dirección de dicho contacto.
-      <td/>
-    </tr>
-    <tr>
-      <td style="text-align: right">
-        <code>bill_with_shipping</code> <br> boolean
-      <td/>
-      <td>
-        En caso de que el contacto tenga una dirección fisica y se desee utilizar la misma direccón para su facturación.
-      <td/>
-    </tr>
-    <tr>
-      <td style="text-align: right">
-        <code>billing_address</code> <br> object
-      <td/>
-      <td>
-        La dirección fiscal del contacto.
-      <td/>
-    </tr>
-    <tr>
-      <td style="text-align: right">
-        <code>shipping_address</code> <br> object
-      <td/>
-      <td>
-        La dirección física del contacto.
-      <td/>
-    </tr>
-  </tbody>
-</table>
+                           Atributo | Descripción
+-----------------------------------:|:-----------------------------------
+                  `id` <br> integer | Identificador único que representa un contacto.
+                 `name` <br> string | Nombre del contacto.
+       `identification` <br> string | Número de identificación utilizado para la facturación. Ej. RFC, cédula, etc.
+`billing_address_email` <br> string | El correo o correos electrónicos a donde se envian las facturas. En caso de tener varios correos deben ir separados por una coma.
+                `alias` <br> string | Sobrenombre que se le desee agregar para futuras referencias de busquedar por nombre.
+    `bill_with_parent` <br> boolean | Si el contacto tiene una cuenta padre, se desea facturar con la información fiscal y dirección de dicho contacto.
+  `bill_with_shipping` <br> boolean | En caso de que el contacto tenga una dirección fisica y se desee utilizar la misma direccón para su facturación.
+      `billing_address` <br> object | La dirección fiscal del contacto.
+     `shipping_address` <br> object | La dirección física del contacto.
 
 ## Consultar un Contacto
 
+> Definición
+
 ```shell
-# Ejemplo de llamada
+GET <%= endpoint_url %>/contacts/{CONTACT_ID}
+```
+
+> Ejemplo de llamada
+
+```shell
 curl "<%= endpoint_url %>/contacts/1" \
   -H "Authorization: {LLAVE_PRIVADA}" \
   -H "Content-Type: application/json"
@@ -100,7 +36,7 @@ curl "<%= endpoint_url %>/contacts/1" \
 
 > Resultado
 
-```json
+```shell
 {
   "contact": {
     "id": 2145,
@@ -141,21 +77,24 @@ curl "<%= endpoint_url %>/contacts/1" \
 
 Endpoint que permite consultar un contacto registrado en la aplicación.
 
-### HTTP Request
-
-`GET <%= endpoint_url %>/contacts/:id`
-
-### URL Parameters
+### Argumentos
 
 Parámetro | Descripción
---------- | -----------
-id | El identificador del contacto que deseas obtener la información.
+-----------------------------------:|:-----------------------------------
+`id` <br> requerido | El identificador del contacto que deseas obtener la información.
 
 
 ## Lista de Contactos
 
+> Definición
+
 ```shell
-# Ejemplo de llamada
+GET <%= endpoint_url %>/contacts
+```
+
+> Ejemplo de llamada
+
+```shell
 curl "<%= endpoint_url %>/contacts" \
   -H "Authorization: {LLAVE_PRIVADA}" \
   -H "Content-Type: application/json"
@@ -163,7 +102,7 @@ curl "<%= endpoint_url %>/contacts" \
 
 > Resultado
 
-```json
+```shell
 {
   "contacts": [
     {
@@ -184,20 +123,23 @@ curl "<%= endpoint_url %>/contacts" \
 
 Endpoint que permite consultar un listado de los contactos registrados.
 
-### HTTP Request
+### Argumentos
 
-`GET <%= endpoint_url %>/contacts`
-
-### Query Parameters
-
-Parámetro | Tipo | Descripción
---------- | ------- | -----------
-query | string | Cadena de texto que se quiere utilizar para buscar los contactos que en el nombre contienen dicho texto
+            Parámetro | Descripción
+---------------------:|:-----------------------------------
+  `query` <br> string | Cadena de texto que se quiere utilizar para buscar los contactos que en el nombre contienen dicho texto.
 
 ## Crear Contacto
 
+> Definición
+
 ```shell
-# Ejemplo de llamada básica
+POST <%= endpoint_url %>/contacts
+```
+
+> Ejemplo de llamada
+
+```shell
 curl "<%= endpoint_url %>/contacts" \
   -X POST \
   -H "Authorization: {LLAVE_PRIVADA}" \
@@ -210,7 +152,7 @@ curl "<%= endpoint_url %>/contacts" \
 
 > Resultado
 
-```json
+```shell
 {
   "contact": {
     "id": 50,
@@ -234,19 +176,23 @@ curl "<%= endpoint_url %>/contacts" \
 
 Endpoint que permite crear un nuevo contacto.
 
-### HTTP Request
-
-`POST <%= endpoint_url %>/contacts`
-
 ### Argumentos
 
-Parámetro | Tipo | Requerido | Descripción
---------- | ------- | ------- | -----------
-name | string | requerido | Nombre del Contacto.
-identification | string | requerido | Número de identificación utilizado para la facturación. Ej. RFC, cédula, etc.
-
+                               Parámetro | Descripción
+ ---------------------------------------:|:-----------------------------------------------------------------------------
+           `name` <br> string, requerido | Nombre del Contacto.
+ `identification` <br> string, requerido | Número de identificación utilizado para la facturación. Ej. RFC, cédula, etc.
+ `billing_address_email` <br> string, opcional | El correo o correos electrónicos a donde se envian las facturas. En caso de tener varios correos deben ir separados por una coma.
+`alias` <br> string, opcional | Sobrenombre que se le desee agregar para futuras referencias de busquedar por nombre.
 
 ## Editar Contacto
+
+> Definición
+
+```shell
+PUT <%= endpoint_url %>/contacts/{CONTACT_ID}
+```
+> Ejemplo de llamada
 
 ```shell
 curl <%= endpoint_url %>/contacts/50 \
@@ -261,7 +207,7 @@ curl <%= endpoint_url %>/contacts/50 \
 
 > Resultado
 
-```json
+```shell
 {
   "contact": {
     "id": 50,
@@ -284,19 +230,21 @@ curl <%= endpoint_url %>/contacts/50 \
 ```
 Endpoint que permite editar un contacto existente.
 
-### HTTP Request
-
-`PUT <%= endpoint_url %>/contacts/:id`
-
-### URL Parameters
+### Argumentos
 
 Parámetro | Descripción
---------- | -----------
-id | El identificador del contacto que deseas actualizar
-
-
+-----------------------------------:|:-----------------------------------
+`id` <br> requerido| El identificador del contacto que deseas actualizar
 
 ## Eliminar Contacto
+
+> Definición
+
+```shell
+DELETE <%= endpoint_url %>/contacts/{CONTACT_ID}
+```
+
+> Ejemplo de llamada
 
 ```shell
 curl "<%= endpoint_url %>/contacts/50" \
@@ -306,12 +254,8 @@ curl "<%= endpoint_url %>/contacts/50" \
 
 Endpoint que te permite borrar un contacto. Si el cliente cuenta con información relacionada como facturas de ventas, facturas de gastos u otro documento, este no será eliminado en su totalidad solo será marcado como eliminado (soft delete) y no aparecerá en las busquedás principales.
 
-### HTTP Request
-
-`DELETE <%= endpoint_url %>/contacts/:id`
-
-### URL Parameters
+### Argumentos
 
 Parámetro | Descripción
 --------- | -----------
-id | El identificador del contacto que deseas eliminar
+`id` <br> requerido | El identificador del contacto que deseas eliminar
