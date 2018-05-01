@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="images/actiun-favicon.ico" />
     <title>API Reference</title>
 
     <style>
@@ -201,7 +202,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,291 +212,1464 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="shell">cURL</a>
         </div>
         <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
+          <input type="text" class="search" id="input-search" placeholder="Buscar">
         </div>
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#bienvenido-a-actiun" class="toc-h1 toc-link" data-title="bienvenido-a-actiun">¡Bienvenido a Actiun!</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#peticion" class="toc-h2 toc-link" data-title="peticion">Petición</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#paginacion" class="toc-h2 toc-link" data-title="paginacion">Páginación</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#autenticacion" class="toc-h1 toc-link" data-title="autenticacion">Autenticación</a>
+          </li>
+          <li>
+            <a href="#contactos" class="toc-h1 toc-link" data-title="contactos">Contactos</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#objeto-contacto" class="toc-h2 toc-link" data-title="objeto-contacto">Objeto Contacto</a>
+                  </li>
+                  <li>
+                    <a href="#consultar-un-contacto" class="toc-h2 toc-link" data-title="consultar-un-contacto">Consultar un Contacto</a>
+                  </li>
+                  <li>
+                    <a href="#lista-de-contactos" class="toc-h2 toc-link" data-title="lista-de-contactos">Lista de Contactos</a>
+                  </li>
+                  <li>
+                    <a href="#crear-contacto" class="toc-h2 toc-link" data-title="crear-contacto">Crear Contacto</a>
+                  </li>
+                  <li>
+                    <a href="#editar-contacto" class="toc-h2 toc-link" data-title="editar-contacto">Editar Contacto</a>
+                  </li>
+                  <li>
+                    <a href="#eliminar-contacto" class="toc-h2 toc-link" data-title="eliminar-contacto">Eliminar Contacto</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#productos-o-servicios" class="toc-h1 toc-link" data-title="productos-o-servicios">Productos o Servicios</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#objeto-producto-o-servicio" class="toc-h2 toc-link" data-title="objeto-producto-o-servicio">Objeto Producto o Servicio</a>
+                  </li>
+                  <li>
+                    <a href="#consultar-un-producto-o-servicio" class="toc-h2 toc-link" data-title="consultar-un-producto-o-servicio">Consultar un Producto o Servicio</a>
+                  </li>
+                  <li>
+                    <a href="#lista-de-productos-o-servicios" class="toc-h2 toc-link" data-title="lista-de-productos-o-servicios">Lista de Productos o Servicios</a>
+                  </li>
+                  <li>
+                    <a href="#crear-producto-o-servicio" class="toc-h2 toc-link" data-title="crear-producto-o-servicio">Crear Producto o Servicio</a>
+                  </li>
+                  <li>
+                    <a href="#editar-producto-o-servicio" class="toc-h2 toc-link" data-title="editar-producto-o-servicio">Editar Producto o Servicio</a>
+                  </li>
+                  <li>
+                    <a href="#eliminar-producto-o-servicio" class="toc-h2 toc-link" data-title="eliminar-producto-o-servicio">Eliminar Producto o Servicio</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#facturas-de-venta" class="toc-h1 toc-link" data-title="facturas-de-venta">Facturas de Venta</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#objeto-factura-de-venta" class="toc-h2 toc-link" data-title="objeto-factura-de-venta">Objeto Factura de Venta</a>
+                  </li>
+                  <li>
+                    <a href="#consultar-un-factura-de-venta" class="toc-h2 toc-link" data-title="consultar-un-factura-de-venta">Consultar un Factura de Venta</a>
+                  </li>
+                  <li>
+                    <a href="#lista-de-facturas-de-venta" class="toc-h2 toc-link" data-title="lista-de-facturas-de-venta">Lista de Facturas de Venta</a>
+                  </li>
+                  <li>
+                    <a href="#crear-factura-de-venta" class="toc-h2 toc-link" data-title="crear-factura-de-venta">Crear Factura de Venta</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errores" class="toc-h1 toc-link" data-title="errores">Errores</a>
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://app.actiun.com'>Crea Tu Cuenta en Actiun</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='bienvenido-a-actiun'>¡Bienvenido a Actiun!</h1>
+<p>El API de Actiun es un servicio que te permite acceder a tu cuenta para conectar aplicaciones externas y tener acceso instantaneo a tu información.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Para poder tener acceso al API debes crear tu cuenta en Actiun. <a href="https://app.actiun.com">Crea tu cuenta aquí</a></p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<p>En esta documentación encontraras los endpoints con los cuales podrás interacturar.</p>
+<h2 id='peticion'>Petición</h2>
+<p>El URL base para todos los recursos es: https://api.actiun.com</p>
+<h2 id='paginacion'>Páginación</h2>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight shell tab-shell"><code>curl --include <span class="s2">"https://api.actiun.com/invoices?page=5"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Resultado</p>
 </blockquote>
+<pre class="highlight shell tab-shell"><code>HTTP/1.1 200 OK
+Cache-Control: max-age<span class="o">=</span>0, private, must-revalidate
+Content-Type: application/json; <span class="nv">charset</span><span class="o">=</span>utf-8
+Etag: W/<span class="s2">"a6cb020fadde98f283d5c30f7d483013"</span>
+Link: &lt;http://api.actiun.com/invoices?page<span class="o">=</span>1&gt;; <span class="nv">rel</span><span class="o">=</span><span class="s2">"first"</span>,
+  &lt;http://api.actiun.com/invoices?page<span class="o">=</span>4&gt;; <span class="nv">rel</span><span class="o">=</span><span class="s2">"prev"</span>,
+  &lt;http://api.actiun.com/invoices?page<span class="o">=</span>207&gt;; <span class="nv">rel</span><span class="o">=</span><span class="s2">"last"</span>,
+  &lt;http://api.actiun.com/invoices?page<span class="o">=</span>6&gt;; <span class="nv">rel</span><span class="o">=</span><span class="s2">"next"</span>
+Per-Page: 25
+Total: 5154
+<span class="c"># ...</span>
+</code></pre>
+<p>Todos los endpoints que sean un listado de objetos serán paginados autmaticamente. Cada página constará de <code>25</code> registros por página.</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>Puedes especificar que página deseas acceder utilizando el parametro de <code>page</code> en el URL del endpoint.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p><code>GET /clients?page=2</code></p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>Si el parámetro page es omitido se entegará la primer página disponible usando el valor 1.</p>
+
+<p>La información relacionada a la paginación se encuentra disponible en los headers de respuesta.</p>
+<h1 id='autenticacion'>Autenticación</h1><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/clients"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span>
+</code></pre>
+<p>Actiun utiliza Basic Access como método de autenticación. Todos los request que se realicen deben incluir el header Authorization.</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='contactos'>Contactos</h1>
+<p>Los contactos representan los clientes y proveedores los cuales se encuentran asociados a tu cuenta.</p>
+<h2 id='objeto-contacto'>Objeto Contacto</h2>
+<p>Un contacto contiene los siguientes atributos:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th style="text-align: right">Atributo</th>
+<th style="text-align: left">Descripción</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td style="text-align: right"><code>id</code> <br> integer</td>
+<td style="text-align: left">Identificador único que representa un contacto.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td style="text-align: right"><code>name</code> <br> string</td>
+<td style="text-align: left">Nombre del contacto.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>identification</code> <br> string</td>
+<td style="text-align: left">Número de identificación utilizado para la facturación. Ej. RFC, cédula, etc.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>billing_address_email</code> <br> string</td>
+<td style="text-align: left">El correo o correos electrónicos a donde se envian las facturas. En caso de tener varios correos deben ir separados por una coma.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>alias</code> <br> string</td>
+<td style="text-align: left">Sobrenombre que se le desee agregar para futuras referencias de busquedar por nombre.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>bill_with_parent</code> <br> boolean</td>
+<td style="text-align: left">Si el contacto tiene una cuenta padre, se desea facturar con la información fiscal y dirección de dicho contacto.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>bill_with_shipping</code> <br> boolean</td>
+<td style="text-align: left">En caso de que el contacto tenga una dirección fisica y se desee utilizar la misma direccón para su facturación.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>billing_address</code> <br> object</td>
+<td style="text-align: left">La dirección fiscal del contacto.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>shipping_address</code> <br> object</td>
+<td style="text-align: left">La dirección física del contacto.</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id='consultar-un-contacto'>Consultar un Contacto</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/contacts/<span class="o">{</span>CONTACT_ID<span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"contact"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: 2145,
+    <span class="s2">"name"</span>: <span class="s2">"ACME SA DE CV"</span>,
+    <span class="s2">"identification"</span>: <span class="s2">"ACM131115G35"</span>,
+    <span class="s2">"billing_address_email"</span>: <span class="s2">"compras@spt.com.mx"</span>,
+    <span class="s2">"alias"</span>: <span class="s2">""</span>,
+    <span class="s2">"bill_with_parent"</span>: <span class="nb">false</span>,
+    <span class="s2">"bill_with_shipping"</span>: <span class="nb">false</span>,
+    <span class="s2">"parent"</span>: null,
+    <span class="s2">"billing_address"</span>: <span class="o">{</span>
+      <span class="s2">"street"</span>: <span class="s2">"MANUEL  ALVAREZ  BRAVO"</span>,
+      <span class="s2">"street_2"</span>: null,
+      <span class="s2">"outdoor_number"</span>: <span class="s2">"902"</span>,
+      <span class="s2">"interior_number"</span>: <span class="s2">""</span>,
+      <span class="s2">"neighborhood"</span>: <span class="s2">"PASEO  REAL"</span>,
+      <span class="s2">"city"</span>: <span class="s2">"GENERAL ESCOBEDO"</span>,
+      <span class="s2">"state"</span>: <span class="s2">"NLE"</span>,
+      <span class="s2">"country"</span>: <span class="s2">"MX"</span>,
+      <span class="s2">"zipcode"</span>: <span class="s2">"66072"</span>,
+      <span class="s2">"full"</span>: <span class="s2">"MANUEL  ALVAREZ  BRAVO, 902, PASEO  REAL, C.P. 66072 GENERAL ESCOBEDO, Nuevo León, México"</span>
+    <span class="o">}</span>,
+    <span class="s2">"shipping_address"</span>: <span class="o">{</span>
+      <span class="s2">"street"</span>: <span class="s2">"AV CUCHARAS"</span>,
+      <span class="s2">"street_2"</span>: null,
+      <span class="s2">"outdoor_number"</span>: <span class="s2">"100"</span>,
+      <span class="s2">"interior_number"</span>: <span class="s2">""</span>,
+      <span class="s2">"neighborhood"</span>: <span class="s2">"PARQUE  IND  ESCOBEDO"</span>,
+      <span class="s2">"city"</span>: <span class="s2">"GENERAL ESCOBEDO"</span>,
+      <span class="s2">"state"</span>: <span class="s2">"NLE"</span>,
+      <span class="s2">"country"</span>: <span class="s2">"MX"</span>,
+      <span class="s2">"zipcode"</span>: <span class="s2">"66072"</span>,
+      <span class="s2">"full"</span>: <span class="s2">"AV CUCHARAS, 100, PARQUE  IND  ESCOBEDO, C.P. 66072 GENERAL ESCOBEDO, Nuevo León, México"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Endpoint que permite consultar un contacto registrado en la aplicación.</p>
+<h3 id='argumentos'>Argumentos</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td style="text-align: right"><code>id</code> <br> requerido</td>
+<td style="text-align: left">El identificador del contacto que deseas obtener la información.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
+<h2 id='lista-de-contactos'>Lista de Contactos</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/contacts
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"contacts"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 1,
+      <span class="s2">"name"</span>: <span class="s2">"ACME SA DE CV"</span>,
+      <span class="s2">"identification"</span>: <span class="s2">"ACM120412I11"</span>,
+      <span class="s2">"alias"</span> : <span class="s2">""</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 2,
+      <span class="s2">"name"</span>: <span class="s2">"ACME SA DE CV"</span>,
+      <span class="s2">"identification"</span>: <span class="s2">"ACM120412I11"</span>,
+      <span class="s2">"alias"</span> : <span class="s2">""</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<p>Endpoint que permite consultar un listado de los contactos registrados.</p>
+<h3 id='argumentos-2'>Argumentos</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><code>query</code> <br> string</td>
+<td style="text-align: left">Cadena de texto que se quiere utilizar para buscar los contactos que en el nombre contienen dicho texto.</td>
+</tr>
+</tbody></table>
+<h2 id='crear-contacto'>Crear Contacto</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/contacts
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{ "contact": {
+   "name": "Empresa Patito SA de CV",
+   "identification": "ACM131115G35"
+}}'</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"contact"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: 50,
+    <span class="s2">"name"</span>: <span class="s2">"Empresa Patito SA de CV"</span>,
+    <span class="s2">"identification"</span>: <span class="s2">"ACM131115G35"</span>,
+    <span class="s2">"billing_address_email"</span>: null,
+    <span class="s2">"alias"</span>: null,
+    <span class="s2">"bill_with_parent"</span>: <span class="nb">false</span>,
+    <span class="s2">"bill_with_shipping"</span>: <span class="nb">true</span>,
+    <span class="s2">"depth"</span>: 0,
+    <span class="s2">"credit_days"</span>: 0,
+    <span class="s2">"payment_method_id"</span>: null,
+    <span class="s2">"payment_type_id"</span>: null,
+    <span class="s2">"account_number"</span>: null,
+    <span class="s2">"parent"</span>: null,
+    <span class="s2">"billing_address"</span>: null,
+    <span class="s2">"shipping_address"</span>: null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Endpoint que permite crear un nuevo contacto.</p>
+<h3 id='argumentos-3'>Argumentos</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><code>name</code> <br> string, requerido</td>
+<td style="text-align: left">Nombre del Contacto.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>identification</code> <br> string, requerido</td>
+<td style="text-align: left">Número de identificación utilizado para la facturación. Ej. RFC, cédula, etc.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>billing_address_email</code> <br> string, opcional</td>
+<td style="text-align: left">El correo o correos electrónicos a donde se envian las facturas. En caso de tener varios correos deben ir separados por una coma.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>alias</code> <br> string, opcional</td>
+<td style="text-align: left">Sobrenombre que se le desee agregar para futuras referencias de busquedar por nombre.</td>
+</tr>
+</tbody></table>
+<h2 id='editar-contacto'>Editar Contacto</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>PUT https://api.actiun.com/contacts/<span class="o">{</span>CONTACT_ID<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.actiun.com/contacts/50 <span class="se">\</span>
+    -X PUT <span class="se">\</span>
+    -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -d <span class="s1">'{ "contact": {
+  "alias": "Cuack cuack",
+  "billing_address_email": "macpato@millonario.com"
+}}'</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"contact"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: 50,
+    <span class="s2">"name"</span>: <span class="s2">"Empresa Patito SA de CV"</span>,
+    <span class="s2">"identification"</span>: <span class="s2">"ACM131115G35"</span>,
+    <span class="s2">"billing_address_email"</span>: <span class="s2">"macpato@millonario.com"</span>,
+    <span class="s2">"alias"</span>: <span class="s2">"Cuack cuack"</span>,
+    <span class="s2">"bill_with_parent"</span>: <span class="nb">false</span>,
+    <span class="s2">"bill_with_shipping"</span>: <span class="nb">true</span>,
+    <span class="s2">"depth"</span>: 0,
+    <span class="s2">"credit_days"</span>: 0,
+    <span class="s2">"payment_method_id"</span>: null,
+    <span class="s2">"payment_type_id"</span>: null,
+    <span class="s2">"account_number"</span>: null,
+    <span class="s2">"parent"</span>: null,
+    <span class="s2">"billing_address"</span>: null,
+    <span class="s2">"shipping_address"</span>: null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Endpoint que permite editar un contacto existente.</p>
+<h3 id='argumentos-4'>Argumentos</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><code>id</code> <br> requerido</td>
+<td style="text-align: left">El identificador del contacto que deseas actualizar</td>
+</tr>
+</tbody></table>
+<h2 id='eliminar-contacto'>Eliminar Contacto</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>DELETE https://api.actiun.com/contacts/<span class="o">{</span>CONTACT_ID<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts/50"</span> <span class="se">\</span>
   -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span>
 </code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p>Endpoint que te permite borrar un contacto. Si el cliente cuenta con información relacionada como facturas de ventas, facturas de gastos u otro documento, este no será eliminado en su totalidad solo será marcado como eliminado (soft delete) y no aparecerá en las busquedás principales.</p>
+<h3 id='argumentos-5'>Argumentos</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Parámetro</th>
+<th>Descripción</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td><code>id</code> <br> requerido</td>
+<td>El identificador del contacto que deseas eliminar</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+<h1 id='productos-o-servicios'>Productos o Servicios</h1>
+<p>Los productos o servicios representan lo que tu negocios vende y/o compra.</p>
+
+<p>Se considera a los productos como algo que puede ser tangible y que tienes disponible a la venta. Además que este puede tener un inventario disponible en tu negocio. Todos los productos debener tener una unidad de medida como (piezas, centimetros, litros, metros, etc.), una cantidad incial de productos disponbles (en caso que desees llevar un control del inventairo del producto) y el costo unitario.</p>
+
+<p>Por otro lado los servicios contiene casi la misma información pero no se controla el inventario.</p>
+<h2 id='objeto-producto-o-servicio'>Objeto Producto o Servicio</h2>
+<p>Un producto o servicio contiene los siguientes atributos:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Atributo</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><code>id</code> <br> integer</td>
+<td style="text-align: left">Identificador único que representa un producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>name</code> <br> string</td>
+<td style="text-align: left">Nombre del producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>description</code> <br> string</td>
+<td style="text-align: left">Descripción del producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>price</code> <br> decimal</td>
+<td style="text-align: left">El precio producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>units</code> <br> string</td>
+<td style="text-align: left">La unidad de medida relacionada al producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>sku</code> <br> string</td>
+<td style="text-align: left">Código único que consiste en letras y números que identifican características de cada producto, como su fabricación, marca, estilo, color y talla.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>inventory</code> <br> object</td>
+<td style="text-align: left">La información relacionada al inventario del producto.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>taxes</code> <br> array</td>
+<td style="text-align: left">La información de los impuestos relacionados del producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>product_key</code> <br> object</td>
+<td style="text-align: left">Indica la clave del producto o servicio basada en el catálogo del SAT de productos o servicios.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>unit_key</code> <br> object</td>
+<td style="text-align: left">Indica la clave de unidad de medida del producto o servicio basada en el catálogo del SAT de medidas.</td>
+</tr>
+</tbody></table>
+<h2 id='consultar-un-producto-o-servicio'>Consultar un Producto o Servicio</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/items/<span class="o">{</span>ITEM_ID<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items/1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"item"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: 1,
+    <span class="s2">"name"</span>: <span class="s2">"Bolígrafo de Punta Fina"</span>,
+    <span class="s2">"description"</span>: <span class="s2">"Bolígrafo de Punta Fina Color Rojo Marca Patito"</span>,
+    <span class="s2">"price"</span>: 10.0,
+    <span class="s2">"units"</span>: <span class="s2">"Pieza"</span>,
+    <span class="s2">"sku"</span>: <span class="s2">""</span>,
+    <span class="s2">"discount"</span>: null,
+    <span class="s2">"inventory"</span>: <span class="o">{}</span>,
+    <span class="s2">"taxes"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"percentage"</span>: 16,
+        <span class="s2">"name"</span>: <span class="s2">"IVA"</span>,
+        <span class="s2">"description"</span>: null,
+        <span class="s2">"category"</span>: <span class="s2">"federal"</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"product_key"</span>: <span class="o">{</span>
+      <span class="s2">"id"</span>: 26865,
+      <span class="s2">"name"</span>: <span class="s2">"Bolígrafos"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"44121701"</span>
+    <span class="o">}</span>,
+    <span class="s2">"unit_key"</span>: <span class="o">{</span>
+      <span class="s2">"id"</span>: 1730,
+      <span class="s2">"name"</span>: <span class="s2">"Pieza"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"H87"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Endpoint que permite consultar un producto o servicio registrado.</p>
+<h3 id='argumentos'>Argumentos</h3>
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br> requerido</td>
+<td>El identificador del producto o servicio que deseas obtener la información.</td>
+</tr>
+</tbody></table>
+<h2 id='lista-de-productos-o-servicios'>Lista de Productos o Servicios</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/items
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"items"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 1,
+      <span class="s2">"name"</span>: <span class="s2">"Bolígrafo de Punta Fina"</span>,
+      <span class="s2">"description"</span>: <span class="s2">"Bolígrafo de Punta Fina Color Rojo Marca Patito"</span>,
+      <span class="s2">"price"</span>: 10.0,
+      <span class="s2">"units"</span>: <span class="s2">"Pieza"</span>,
+      <span class="s2">"sku"</span>: <span class="s2">""</span>,
+      <span class="s2">"discount"</span>: null,
+      <span class="s2">"inventory"</span>: <span class="o">{}</span>,
+      <span class="s2">"taxes"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+          <span class="s2">"id"</span>: 1,
+          <span class="s2">"percentage"</span>: 16,
+          <span class="s2">"name"</span>: <span class="s2">"IVA"</span>,
+          <span class="s2">"description"</span>: null,
+          <span class="s2">"category"</span>: <span class="s2">"federal"</span>
+        <span class="o">}</span>
+      <span class="o">]</span>,
+      <span class="s2">"product_key"</span>: <span class="o">{</span>
+        <span class="s2">"id"</span>: 26865,
+        <span class="s2">"name"</span>: <span class="s2">"Bolígrafos"</span>,
+        <span class="s2">"value"</span>: <span class="s2">"44121701"</span>
+      <span class="o">}</span>,
+      <span class="s2">"unit_key"</span>: <span class="o">{</span>
+        <span class="s2">"id"</span>: 1730,
+        <span class="s2">"name"</span>: <span class="s2">"Pieza"</span>,
+        <span class="s2">"value"</span>: <span class="s2">"H87"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<p>Endpoint que permite consultar un listado de los contactos registrados.</p>
+<h3 id='argumentos-2'>Argumentos</h3>
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>query</code> <br> string</td>
+<td>Cadena de texto que se quiere utilizar para buscar los productos o servicios que en el nombre o descripción contienen dicho texto</td>
+</tr>
+</tbody></table>
+<h2 id='crear-producto-o-servicio'>Crear Producto o Servicio</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/items
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada básica</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{ "item": {
+   "name": "Lápiz No. 2",
+   "price": 8.50,
+   "product_key_code": "44121706",
+   "unit_key_code": "H87"
+  }}'</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"items"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: 50,
+    <span class="s2">"name"</span>: <span class="s2">"Lápiz No. 2"</span>,
+    <span class="s2">"description"</span>: null,
+    <span class="s2">"price"</span>: 8.5,
+    <span class="s2">"units"</span>: <span class="s2">"Pieza"</span>,
+    <span class="s2">"sku"</span>: null,
+    <span class="s2">"discount"</span>: null,
+    <span class="s2">"inventory"</span>: <span class="o">{}</span>,
+    <span class="s2">"taxes"</span>: <span class="o">[]</span>,
+    <span class="s2">"images"</span>: <span class="o">[]</span>,
+    <span class="s2">"product_key"</span>: <span class="o">{</span>
+      <span class="s2">"id"</span>: 26870,
+      <span class="s2">"name"</span>: <span class="s2">"Lápices de madera"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"44121706"</span>
+    <span class="o">}</span>,
+    <span class="s2">"unit_key"</span>: <span class="o">{</span>
+      <span class="s2">"id"</span>: 1730,
+      <span class="s2">"name"</span>: <span class="s2">"Pieza"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"H87"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Endpoint que permite crear un nuevo contacto.</p>
+<h3 id='argumentos-3'>Argumentos</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right">name <br> string, requerido</td>
+<td style="text-align: left">Nombre del producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right">descripton <br> string, opcional</td>
+<td style="text-align: left">descripción del producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right">price <br> decimal, requerido</td>
+<td style="text-align: left">El precio de venta del producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right">units <br> string, requerido</td>
+<td style="text-align: left">La unidad de medida relacionada al producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right">sku <br> string, opcional</td>
+<td style="text-align: left">Código único que consiste en letras y números que identifican características de cada producto, como su fabricación, marca, estilo, color y talla.</td>
+</tr>
+<tr>
+<td style="text-align: right">product_key_code <br> string, requerido</td>
+<td style="text-align: left">Representa el número de la clave de producto o ClaveProdServ que se encuentra en el catálogo del SAT.</td>
+</tr>
+<tr>
+<td style="text-align: right">unit_key_code <br> string, requerido</td>
+<td style="text-align: left">Representa el número de la clave de las unidades de producto o ClaveUnidad que se encuentra en el catálogo del SAT.</td>
+</tr>
+</tbody></table>
+<h2 id='editar-producto-o-servicio'>Editar Producto o Servicio</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>PUT https://api.actiun.com/items/<span class="o">{</span>ITEM_ID<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://api.actiun.com/items/50 <span class="se">\</span>
+    -X PUT <span class="se">\</span>
+    -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -d <span class="s1">'{ "item": {
+  "description": "Lapiz de Madera",
+  "price": 9.5"
+}}'</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"item"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: 50,
+    <span class="s2">"name"</span>: <span class="s2">"Lápiz No. 2"</span>,
+    <span class="s2">"description"</span>: <span class="s2">"Lapiz No.3 de Madera"</span>,
+    <span class="s2">"price"</span>: 10,
+    <span class="s2">"units"</span>: <span class="s2">"Pieza"</span>,
+    <span class="s2">"sku"</span>: null,
+    <span class="s2">"discount"</span>: null,
+    <span class="s2">"inventory"</span>: <span class="o">{}</span>,
+    <span class="s2">"taxes"</span>: <span class="o">[]</span>,
+    <span class="s2">"product_key"</span>: <span class="o">{</span>
+      <span class="s2">"id"</span>: 26870,
+      <span class="s2">"name"</span>: <span class="s2">"Lápices de madera"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"44121706"</span>
+    <span class="o">}</span>,
+    <span class="s2">"unit_key"</span>: <span class="o">{</span>
+      <span class="s2">"id"</span>: 1730,
+      <span class="s2">"name"</span>: <span class="s2">"Pieza"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"H87"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Endpoint que permite editar un contacto existente.</p>
+<h3 id='argumentos-4'>Argumentos</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><code>id</code> <br> requerido</td>
+<td style="text-align: left">El identificador del producto o servicio que deseas actualizar</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>name</code> <br> string, requerido</td>
+<td style="text-align: left">Nombre del producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>descripton</code> <br> string, opcional</td>
+<td style="text-align: left">descripción del producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>price</code> <br> decimal, requerido</td>
+<td style="text-align: left">El precio de venta del producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>units</code> <br> string, requerido</td>
+<td style="text-align: left">La unidad de medida relacionada al producto o servicio.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>sku</code> <br> string, opcional</td>
+<td style="text-align: left">Código único que consiste en letras y números que identifican características de cada producto, como su fabricación, marca, estilo, color y talla.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>product_key_code</code> <br> string, requerido</td>
+<td style="text-align: left">Representa el número de la clave de producto o ClaveProdServ que se encuentra en el catálogo del SAT.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>unit_key_code</code> <br> string, requerido</td>
+<td style="text-align: left">Representa el número de la clave de las unidades de producto o ClaveUnidad que se encuentra en el catálogo del SAT.</td>
+</tr>
+</tbody></table>
+<h2 id='eliminar-producto-o-servicio'>Eliminar Producto o Servicio</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>DELETE https://api.actiun.com/items/<span class="o">{</span>ITEM_ID<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items/50"</span> <span class="se">\</span>
+  -X DELETE
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span>
+</code></pre>
+<blockquote>
+<p>Resultado (204 No Content)</p>
+</blockquote>
+
+<p>Endpoint que te permite borrar un producto o servicio que este relacionada a la empresa.</p>
+<h3 id='argumentos-5'>Argumentos</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><code>id</code> <br> requerido</td>
+<td style="text-align: left">El identificador del producto o servicio que deseas eliminar.</td>
+</tr>
+</tbody></table>
+<h1 id='facturas-de-venta'>Facturas de Venta</h1>
+<p>Los facturas de venta son los documentos representan las ventas de tu empresa. Las facturas deben estar asociadas a un contacto y deben tener al menos un producto o servicio a facturar.</p>
+
+<p>La factura de venta puede tener solo un estatus a la vez, y los significados son los siguientes:</p>
+
+<ul>
+<li><code>drafted</code> - La factura de venta todavía se encuentra en proceso de confirmación.</li>
+<li><code>stamping</code> - La factura de venta se esta siendo enviada al SAT para timbrarse.</li>
+<li><code>opened</code> - La factura de venta ya fue timbrada, y esta pendiente de ser pagada por su cliente.</li>
+<li><code>sent</code> - La factura de venta ya fue timbrada, y esta fue enviada a su cliente. Esto sucede automáticamente al enviar la factura por correo electrónico.</li>
+<li><code>viewed</code> - La factura de venta  ya fue timbrada, fue enviada a tu cliente por correo electrónico y este descargo los archivos del PDF, XML o visito la página de la información de la factura.</li>
+<li><code>paid</code> - La factura de venta fue marcada como pagada para llevar el registro de que dicho ingreso ya fue efectivamente cobrado.</li>
+<li><code>partial</code> - La factura de venta fue marcada como pagada para llevar el registro de que dicho ingreso ya fue parcialmente cobrado y todavía hay un saldo pendiente.</li>
+<li><code>voided</code> - La factura de venta fue cancelada y se envia la solicitud de cancelación al SAT.</li>
+</ul>
+<h2 id='objeto-factura-de-venta'>Objeto Factura de Venta</h2>
+<p>Un Factura de Venta contiene los siguientes atributos:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Atributo<th/>
+      <th>Descripción<th/>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">
+        <code>id</code> <br> integer
+      <td/>
+      <td>
+        Identificador único que representa una factura de venta.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>date</code> <br> date
+      <td/>
+      <td>
+        Fecha de la factura.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>due_at</code> <br> date
+      <td/>
+      <td>
+        Fecha de vencimiento de la factura. Que se calcula utilizando la opción due_offset_days.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>client</code> <br> object
+      <td/>
+      <td>
+        Objeto que contiene la información del cliente asociado a la factura.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>status</code> <br> string
+      <td/>
+      <td>
+        Estado de la factura de venta. Los posibles estatus son los siguientes:
+        <code>drafted</code>,
+        <code>stamping</code>,
+        <code>opened</code>,
+        <code>sent</code>,
+        <code>viewed</code>,
+        <code>paid</code>,
+        <code>partial</code> y
+        <code>voided</code>.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>kind</code> <br> string
+      <td/>
+      <td>
+        Representa si el documento es un ingreso o egreso.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>prefix</code> <br> string
+      <td/>
+      <td>
+        Es la serie que se esta utilizando en la factura de venta.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>number</code> <br> string
+      <td/>
+      <td>
+        Es el número consecutivo que se esta utilizando en la factura de venta.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>description</code> <br> string
+      <td/>
+      <td>
+        Notas de la factura, visibles en el documento impreso o PDF.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>total</code> <br> decimal
+      <td/>
+      <td>
+        El total de la factura.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>total_paid</code> <br> decimal
+      <td/>
+      <td>
+        El saldo pendinte por pagar de la factura.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>cfdi_use</code> <br> object
+      <td/>
+      <td>
+        Datos sobre el uso que le dará al cliente al CFDI de la factura de venta.
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>payment_method</code> <br> string
+      <td/>
+      <td>
+        Indica el método de pago de la factura.
+      <td/>
+    </tr>
+      <td style="text-align: right">
+        <code>account_number</code> <br> string
+      <td/>
+      <td>
+        Indica el número de cuenta o tarjeta de pago. Debe tener mínimo 4 caracteres.
+      <td/>
+    </tr>
+    </tr>
+      <td style="text-align: right">
+        <code>currency</code> <br> object
+      <td/>
+      <td>
+        Objeto que contiene la información de la moneda asociada a la factura.
+        <br>
+        El objecto contiene lo siguiente:
+        <ul>
+          <li>currency: Identificador de la divisa basado en el ISO 4217 que se utilizo para generar la factura.</li>
+          <li>symbol: Simboló de la divisa utilizada en la factura..</li>
+          <li>exchange_rate: Tipo de cambio que se utilizo para la factura.</li>
+        </ul>
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>line_items</code> <br> array
+      <td/>
+      <td>
+        Array de las lineas de captura de la factua de venta. Cada linea esta asociada a un producto o servicio previamente registrado en Actiun.
+        <br>
+        Cada objeto contiene los siguientes atributos:
+        <ul>
+          <li>id: Identificador de la línea de captura.</li>
+          <li>name: Nombre del producto o servicio.</li>
+          <li>description: Descripción del producto o servicio.</li>
+          <li>price: Precio de venta del producto o servicio.</li>
+          <li>quantity: Cantidad vendida del producto o servicio.</li>
+          <li>discount: Porcentaje de descuento aplicado al producto.</li>
+          <li>subtotal: Subtotal de la línea de captura (no incluye impuestos).</li>
+          <li>taxes: Array de objetos taxes que indican los impuestos aplicados al producto o servicio al momento de la venta.</li>
+          <li>retentions: Array de objetos retentions que indican las retenciones aplicados al producto o servicio al momento de la venta.</li>
+        </ul>
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>attachments</code> <br> array
+      <td/>
+      <td>
+        Array de los archivos adjuntos que tenga la factura de venta.
+        <br>
+        Cada objeto contiene los siguientes atributos:
+        <ul>
+          <li>type: Tipo de formato del documento.</li>
+          <li>download_url: La página para descargar el documento.</li>
+        </ul>
+      <td/>
+    </tr>
+    <tr>
+      <td style="text-align: right">
+        <code>stamp</code> <br> object
+      <td/>
+      <td>
+        Objeto que contiene la información del timbre fiscal de la factura.
+        <br>
+        El objecto contiene lo siguiente:
+        <ul>
+          <li>sat_uuid: Identificador entregado por el SAT de la factura.</li>
+          <li>sat_certificate_number: Número de certificado del SAT.</li>
+          <li>sat_stamp: Sello del SAT.</li>
+          <li>cfd_stamp: Sello del CFDI.</li>
+          <li>stamped_date: La fecha del timbre en el SAT.</li>
+        </ul>
+      <td/>
+    </tr>
+  </tbody>
+</table>
+<h2 id='consultar-un-factura-de-venta'>Consultar un Factura de Venta</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/invoices/<span class="o">{</span>INVOICE_ID<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/invoices/150"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74740</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"income"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13804"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Por definir"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">18.6574</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-09T16:09:48.314-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-09T16:37:48.043-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/pdf/f898dc15-06a1-4d83-9c9a-c8a127993ff3"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xml"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/xml/f898dc15-06a1-4d83-9c9a-c8a127993ff3"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166707</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Servicios de organización de transportes"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEIGHT SCALING / PESAJE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Actividad"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2251</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"federal"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"retentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sat_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90E59622-FCCC-4838-A792-5916AB8C81AB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sat_certificate_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00001000000403442064"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sat_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng=="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cfd_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg=="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stamped_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-09T16:37:46.000-06:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10819</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME SA DE CV"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XEXX010101000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"billing_address_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facturacion@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bill_with_parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bill_with_shipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"cfdi_use"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gastos en general"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G03"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Endpoint que permite consultar una factura de venta registrada.</p>
+<h3 id='argumentos'>Argumentos</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><code>id</code> <br> requerido</td>
+<td style="text-align: left">El identificador de la factura de venta que deseas obtener la información.</td>
+</tr>
+</tbody></table>
+<h2 id='lista-de-facturas-de-venta'>Lista de Facturas de Venta</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/invoices
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/invoices"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74787</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1300</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"due_offset_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"income"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">4500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5220</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferencia electrónica"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4036"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MXN"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:47.218-06:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:53.544-06:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/pdf/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xml"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/xml/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166822</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horas de Desarrollo de Página Web"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Desarrollo personalziado de páina web www.acme.com.mx"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">4500</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horas"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2300</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"federal"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"retentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sat_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90E59622-FCCC-4838-A792-5916AB8C81AB"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sat_certificate_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00001000000403442064"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sat_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng=="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cfd_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg=="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stamped_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-10T18:30:00.000-06:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10819</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME SA DE CV"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XEXX010101000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"billing_address_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facturacion@acme.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bill_with_parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bill_with_shipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"cfdi_use"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gastos en general"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G03"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Endpoint que permite consultar un listado de los contactos registrados.</p>
+<h3 id='argumentos-2'>Argumentos</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><code>order_direction</code> <br> string</td>
+<td style="text-align: left">Orden ascendente o descendente en el cual se quieren retornar las facturas. Opciones disponibles son DESC o ASC. Por defecto es ASC (ascendente).</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>order_field</code> <br> string</td>
+<td style="text-align: left">Campo por el cual se desea ordenar las facturas, las opciones posibles son id, date, due_at, status, created_at.</td>
+</tr>
+</tbody></table>
+<h2 id='crear-factura-de-venta'>Crear Factura de Venta</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/invoices
+</code></pre>
+<blockquote>
+<p>Ejemplo de llamada básica</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/invoices"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  -H <span class="s2">"Cache-Control: no-cache"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Postman-Token: 5e2c8505-26ce-4b1a-bb59-2cc58154bee1"</span> <span class="se">\</span>
+  -d <span class="s1">'{ "invoice": {
+    "date": "2018-03-12",
+    "due_offset_days": "30",
+    "client_id": 10819,
+    "payment_method_code": "wire-transfer",
+    "cfdi_use_code": "G03",
+    "line_items": [
+        {"item_id": 1400, "price": 2200, "quantity": 1, "taxes": [{"tax_id": 1}] }
+    ]
+}}'</span>
+
+</code></pre>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74787</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">13814</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-12"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"due_offset_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"income"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2552</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tarjeta de crédito"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8101"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MXN"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:47.218-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:53.544-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/pdf/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xml"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/xml/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166822</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Memoria Ram"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAM de 1600mhz modelo DDR3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pieza"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1400</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"federal"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"retentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sat_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90E59622-FCCC-4838-A792-5916AB8C81AB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sat_certificate_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00001000000403442064"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sat_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng=="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cfd_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg=="</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stamped_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-10T18:30:00.000-06:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10819</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME SA DE CV"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XEXX010101000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"billing_address_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facturacion@acme.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bill_with_parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bill_with_shipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"cfdi_use"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gastos en general"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G03"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Endpoint que permite crear una nueva factura.</p>
+<h3 id='argumentos-3'>Argumentos</h3>
+<table><thead>
+<tr>
+<th style="text-align: right">Parámetro</th>
+<th style="text-align: left">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right"><code>client_id</code> <br> integer, requerido</td>
+<td style="text-align: left">El identificador del contacto que al cuál se le desea asociar la factura.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>date</code> <br> date, opcional</td>
+<td style="text-align: left">Representa la fecha a la factura. Se debe utilizar el formato YYYY-MM-DD. En caso de no especificar se utilizará el día en curso.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>due_offset_days</code></td>
+<td style="text-align: left">string</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>currency_code</code> <br> string, opcional</td>
+<td style="text-align: left">Representa el tipo de divisa a utilizar en la factura. El valor por defecto es <code>MXN</code>. Se deben utilizar los identificadores de divisa según el ISO 4217.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>exchange_rate</code></td>
+<td style="text-align: left">decimal</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>type_code</code> <br> string, opcional</td>
+<td style="text-align: left">Representa el tipo de factura que se desea emitir. El valor por defecto es <code>FACT</code>. Utiliza los siguientes valores: <code>FACT</code> - Factura, <code>ARR</code> - Recibo de arrendamiento, <code>DON</code> - Recibo de donativos, <code>HON</code> - Recibo de honorarios.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>payment_method_code</code> <br> string, requerido</td>
+<td style="text-align: left">Representa el valor del método de pago de la factura. Lo posibles valores son <code>wire-transfer</code> - Transferencia electrónica de fondos, <code>cash</code> - Efectivo, <code>check</code> - Cheque, <code>credit-card</code> - Tarjeta de crédito, <code>debit-card</code> - Tarjeta de débito, <code>electronic-wallet</code> - Monedero electrónico, <code>electronic-money</code> - Dinero Electrónico, <code>grocery-voucher</code> - Vales de Despensa, <code>service-card</code> - Tarjeta de Servicio, <code>other</code> - Por definir, <code>novation</code> - Novación, <code>confusion</code> - Confusión, <code>debt-remission</code> - Remisión de deuda, <code>prescription-or-expiration</code> - Prescripción o caducidad y <code>creditor</code> - A satisfacción del acreedor. Si el payment_type es <code>PPD</code> solo admite el paymentMethod <code>other</code> - Por Definir.</td>
+</tr>
+<tr>
+<td style="text-align: right"><code>payment_type_code</code><br> string, opcional</td>
+<td style="text-align: left">Representa el método de pago de la factura. Admite los valores <code>PUE</code> para Pago en Una sola Exhibición y <code>PPD</code> para Pago en Parcialidades o Diferido. El valor por defecto es <code>PUE</code>.</td>
+</tr>
+</tbody></table>
+<h1 id='errores'>Errores</h1>
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
 
-<p>The Kittn API uses the following error codes:</p>
-
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Código de Error</th>
+<th>Significado</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request sucks.</td>
+<td>Bad Request -- El request está mal formado. La información para crear el recurso no existe o es inválida.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Unauthorized -- Credenciales no válidas.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- El objeto que buscas no existe.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>Method Not Allowed -- Operación no permitida. Ocurre cuando el método del request es inválido para el endpoint requerido.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- Has hecho muchas peticiones por lo que debes bajar el intervalo de solicitudes.</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal Server Error -- Ocurrió un error en la aplicación.</td>
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>Service Unavailable -- La applicación se encuentra en mantenimiento.</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="shell">cURL</a>
           </div>
       </div>
     </div>
