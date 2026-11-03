@@ -1,0 +1,182 @@
+# Cotizaciones
+
+Las cotizaciones se pueden listar, consultar, crear como borrador y actualizar mientras estén en borrador o abiertas. El API no envía cotizaciones por correo, no las convierte en factura, no las cancela ni las elimina.
+
+## Objeto Cotización
+
+Atributo | Descripción
+--------- | -----------
+`id` <br> integer | Identificador único de la cotización.
+`status` <br> string | Estado de la cotización (`drafted`, `opened`, `sent`, …). No se puede escribir desde el API.
+`prefix` <br> string | Serie de la cotización.
+`number` <br> string | Folio de la cotización.
+`identification` <br> string | Serie y folio combinados.
+`date` <br> date | Fecha de la cotización.
+`due_at` <br> date | Fecha de vigencia.
+`description` <br> string | Descripción.
+`external_id` <br> string | Identificador externo (por ejemplo, el ID de tu CRM).
+`subtotal` / `total` <br> decimal | Importes de la cotización.
+`currency` <br> object | Moneda (`code`, `symbol`, `exchange_rate`).
+`client` <br> object | Cliente de la cotización.
+`line_items` <br> array | Líneas (conceptos) de la cotización.
+`attachments` <br> array | Archivos adjuntos (PDF).
+
+## Listar Cotizaciones
+
+> Definición
+
+```shell
+GET <%= endpoint_url %>/quotes
+```
+
+> Ejemplo de llamada
+
+```shell
+curl "<%= endpoint_url %>/quotes?status=drafted&order_field=date&order_direction=DESC" \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json"
+```
+
+> Resultado
+
+```json
+{
+  "quotes": [
+    { "id": 123, "status": "drafted", "number": "15", "identification": "15", "total": 1500.0 }
+  ]
+}
+```
+
+Regresa las cotizaciones de tu empresa. El resultado es paginado (headers `Total`, `Per-Page` y `Link`).
+
+Parámetro | Descripción
+--------- | -----------
+`order_field` <br> string, opcional | `id`, `date`, `due_at`, `status` o `created_at`. Por defecto `created_at`.
+`order_direction` <br> string, opcional | `ASC` o `DESC`. Por defecto `DESC`.
+`q` / `number` <br> string, opcional | Búsqueda por folio o identificación.
+`client_id` <br> integer, opcional | Filtra por cliente.
+`external_id` <br> string, opcional | Filtra por `external_id`.
+`status` <br> string, opcional | Filtra por estado (`drafted`, `opened`, `sent`, …).
+
+## Consultar una Cotización
+
+> Definición
+
+```shell
+GET <%= endpoint_url %>/quotes/{QUOTE_ID}
+```
+
+> Ejemplo de llamada
+
+```shell
+curl "<%= endpoint_url %>/quotes/123" \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json"
+```
+
+> Resultado
+
+```json
+{
+  "quote": {
+    "id": 123,
+    "status": "drafted",
+    "prefix": null,
+    "number": "15",
+    "identification": "15",
+    "date": "2026-11-03",
+    "due_at": "2026-11-03",
+    "description": "Servicio de instalación",
+    "external_id": "crm-77",
+    "subtotal": 1500.0,
+    "total": 1500.0,
+    "currency": { "code": "MXN", "symbol": "$", "exchange_rate": 1.0 },
+    "payment_method": null,
+    "account_number": null,
+    "attachments": [],
+    "client": { "id": 456, "name": "Cliente Cotizaciones" },
+    "line_items": [
+      { "id": 789, "name": "Instalación", "quantity": 1.0, "price": 1500.0, "discount": 0.0, "subtotal": 1500.0 }
+    ],
+    "created_at": "2026-11-03T02:50:00.000-06:00",
+    "updated_at": "2026-11-03T02:50:00.000-06:00"
+  }
+}
+```
+
+Si la cotización no existe o no pertenece a tu empresa se regresa `404` con `{ "errors": "Cotización no encontrada" }`.
+
+## Crear una Cotización
+
+> Definición
+
+```shell
+POST <%= endpoint_url %>/quotes
+```
+
+> Ejemplo de llamada
+
+```shell
+curl "<%= endpoint_url %>/quotes" \
+  -X POST \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "quote": {
+      "client_id": 456,
+      "currency_code": "MXN",
+      "date": "2026-11-03",
+      "due_at": "2026-11-17",
+      "description": "Servicio de instalación",
+      "external_id": "crm-77",
+      "line_items": [
+        { "name": "Instalación", "quantity": 1, "price": 1500 }
+      ]
+    }
+  }'
+```
+
+> Resultado: `201 Created` con el objeto `quote` (ver Consultar una Cotización).
+
+La cotización siempre se crea en borrador (`drafted`). Si omites `number`, el folio se toma de la serie de Cotizaciones de tu empresa.
+
+Parámetro | Descripción
+--------- | -----------
+`client_id` <br> integer, requerido | Tu propia empresa o un contacto relacionado.
+`currency_id` / `currency_code` <br> integer / string, opcional | Moneda (por ejemplo `MXN`).
+`exchange_rate` <br> decimal, condicional | Requerido si la moneda no es `MXN`.
+`date` / `due_at` <br> date, opcional | `due_at` debe ser igual o posterior a `date`.
+`description` <br> string, opcional | Descripción.
+`external_id` <br> string, opcional | Identificador externo.
+`number` / `prefix` <br> string, opcional | Folio y serie.
+`payment_type_id` / `payment_method_id` / `payment_condition_id` <br> integer, opcional | Datos de pago.
+`line_items` <br> array, requerido | Al menos una línea con `name`, `quantity` y `price`; opcionales `item_id`, `description`, `discount`, `units`, `taxes` y `retentions`.
+
+## Actualizar una Cotización
+
+> Definición
+
+```shell
+PATCH <%= endpoint_url %>/quotes/{QUOTE_ID}
+```
+
+> Ejemplo de llamada
+
+```shell
+curl "<%= endpoint_url %>/quotes/123" \
+  -X PATCH \
+  -H "Authorization: {LLAVE_PRIVADA}" \
+  -H "Content-Type: application/json" \
+  -d '{ "quote": { "description": "Instalación y configuración" } }'
+```
+
+Acepta los mismos parámetros que la creación (también `PUT`). Solo se pueden actualizar cotizaciones en borrador o abiertas; `status` no se puede modificar.
+
+## Errores de Cotizaciones
+
+Código | Respuesta
+------ | ---------
+401 | `{ "errors": "Not authenticated" }`
+404 | `{ "errors": "Cotización no encontrada" }`
+422 (validación) | `{ "errors": { "client_id": ["no pertenece a esta empresa"], "line_items": ["debes tener al menos 1 línea de captura"] } }`
+422 (no editable) | `{ "errors": "Solo se pueden actualizar cotizaciones en borrador o abiertas" }`
