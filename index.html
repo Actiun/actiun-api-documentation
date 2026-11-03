@@ -43,7 +43,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -127,7 +127,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -142,41 +142,52 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nn {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nl {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ni {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .bp {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vg {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vi {
   color: #ffffff;
+  background-color: #272822;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .w {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ow {
   color: #f92672;
@@ -206,11 +217,11 @@
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">cURL</a>
         </div>
@@ -297,6 +308,29 @@
               </ul>
           </li>
           <li>
+            <a href="#cotizaciones" class="toc-h1 toc-link" data-title="cotizaciones">Cotizaciones</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#objeto-cotizacion" class="toc-h2 toc-link" data-title="objeto-cotizacion">Objeto Cotización</a>
+                  </li>
+                  <li>
+                    <a href="#listar-cotizaciones" class="toc-h2 toc-link" data-title="listar-cotizaciones">Listar Cotizaciones</a>
+                  </li>
+                  <li>
+                    <a href="#consultar-una-cotizacion" class="toc-h2 toc-link" data-title="consultar-una-cotizacion">Consultar una Cotización</a>
+                  </li>
+                  <li>
+                    <a href="#crear-una-cotizacion" class="toc-h2 toc-link" data-title="crear-una-cotizacion">Crear una Cotización</a>
+                  </li>
+                  <li>
+                    <a href="#actualizar-una-cotizacion" class="toc-h2 toc-link" data-title="actualizar-una-cotizacion">Actualizar una Cotización</a>
+                  </li>
+                  <li>
+                    <a href="#errores-de-cotizaciones" class="toc-h2 toc-link" data-title="errores-de-cotizaciones">Errores de Cotizaciones</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errores" class="toc-h1 toc-link" data-title="errores">Errores</a>
           </li>
       </div>
@@ -319,38 +353,38 @@
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --include <span class="s2">"https://api.actiun.com/invoices?page=5"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--include</span> <span class="s2">"https://api.actiun.com/invoices?page=5"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>HTTP/1.1 200 OK
+<div class="highlight"><pre class="highlight shell tab-shell"><code>HTTP/1.1 200 OK
 Cache-Control: max-age<span class="o">=</span>0, private, must-revalidate
-Content-Type: application/json; <span class="nv">charset</span><span class="o">=</span>utf-8
+Content-Type: application/json<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
 Etag: W/<span class="s2">"a6cb020fadde98f283d5c30f7d483013"</span>
-Link: &lt;http://api.actiun.com/invoices?page<span class="o">=</span>1&gt;; <span class="nv">rel</span><span class="o">=</span><span class="s2">"first"</span>,
-  &lt;http://api.actiun.com/invoices?page<span class="o">=</span>4&gt;; <span class="nv">rel</span><span class="o">=</span><span class="s2">"prev"</span>,
-  &lt;http://api.actiun.com/invoices?page<span class="o">=</span>207&gt;; <span class="nv">rel</span><span class="o">=</span><span class="s2">"last"</span>,
-  &lt;http://api.actiun.com/invoices?page<span class="o">=</span>6&gt;; <span class="nv">rel</span><span class="o">=</span><span class="s2">"next"</span>
+Link: &lt;https://api.actiun.com/invoices?page<span class="o">=</span>1&gt;<span class="p">;</span> <span class="nv">rel</span><span class="o">=</span><span class="s2">"first"</span>,
+  &lt;https://api.actiun.com/invoices?page<span class="o">=</span>4&gt;<span class="p">;</span> <span class="nv">rel</span><span class="o">=</span><span class="s2">"prev"</span>,
+  &lt;https://api.actiun.com/invoices?page<span class="o">=</span>207&gt;<span class="p">;</span> <span class="nv">rel</span><span class="o">=</span><span class="s2">"last"</span>,
+  &lt;https://api.actiun.com/invoices?page<span class="o">=</span>6&gt;<span class="p">;</span> <span class="nv">rel</span><span class="o">=</span><span class="s2">"next"</span>
 Per-Page: 25
 Total: 5154
 <span class="c"># ...</span>
-</code></pre>
+</code></pre></div>
 <p>Todos los endpoints que sean un listado de objetos serán paginados autmaticamente. Cada página constará de <code>25</code> registros por página.</p>
 
 <p>Puedes especificar que página deseas acceder utilizando el parametro de <code>page</code> en el URL del endpoint.</p>
 
-<p><code>GET /clients?page=2</code></p>
+<p><code>GET /contacts?page=2</code></p>
 
 <p>Si el parámetro page es omitido se entegará la primer página disponible usando el valor 1.</p>
 
 <p>La información relacionada a la paginación se encuentra disponible en los headers de respuesta.</p>
-<h1 id='autenticacion'>Autenticación</h1><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/clients"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span>
-</code></pre>
-<p>Actiun utiliza Basic Access como método de autenticación. Todos los request que se realicen deben incluir el header Authorization.</p>
+<h1 id='autenticacion'>Autenticación</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span>
+</code></pre></div>
+<p>Actiun autentica cada petición con tu token de API enviado directamente en el header <code>Authorization</code> (sin prefijo <code>Basic</code> ni <code>Bearer</code>): <code>Authorization: {LLAVE_PRIVADA}</code>. Encuentra tu token en Configuración → Integraciones → API Keys.</p>
 
 <aside class="notice">
 Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
@@ -407,19 +441,19 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/contacts/<span class="o">{</span>CONTACT_ID<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/contacts/<span class="o">{</span>CONTACT_ID<span class="o">}</span>
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts/1"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts/1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"contact"</span>: <span class="o">{</span>
     <span class="s2">"id"</span>: 2145,
     <span class="s2">"name"</span>: <span class="s2">"ACME SA DE CV"</span>,
@@ -455,7 +489,7 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Endpoint que permite consultar un contacto registrado en la aplicación.</p>
 <h3 id='argumentos'>Argumentos</h3>
 <table><thead>
@@ -473,19 +507,19 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/contacts
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/contacts
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"contacts"</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"id"</span>: 1,
@@ -501,7 +535,7 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
     <span class="o">}</span>
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Endpoint que permite consultar un listado de los contactos registrados.</p>
 <h3 id='argumentos-2'>Argumentos</h3>
 <table><thead>
@@ -519,24 +553,24 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/contacts
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/contacts
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{ "contact": {
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{ "contact": {
    "name": "Empresa Patito SA de CV",
    "identification": "ACM131115G35"
 }}'</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"contact"</span>: <span class="o">{</span>
     <span class="s2">"id"</span>: 50,
     <span class="s2">"name"</span>: <span class="s2">"Empresa Patito SA de CV"</span>,
@@ -555,7 +589,7 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
     <span class="s2">"shipping_address"</span>: null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Endpoint que permite crear un nuevo contacto.</p>
 <h3 id='argumentos-3'>Argumentos</h3>
 <table><thead>
@@ -585,24 +619,24 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>PUT https://api.actiun.com/contacts/<span class="o">{</span>CONTACT_ID<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>PUT https://api.actiun.com/contacts/<span class="o">{</span>CONTACT_ID<span class="o">}</span>
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.actiun.com/contacts/50 <span class="se">\</span>
-    -X PUT <span class="se">\</span>
-    -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-    -d <span class="s1">'{ "contact": {
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.actiun.com/contacts/50 <span class="se">\</span>
+    <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{ "contact": {
   "alias": "Cuack cuack",
   "billing_address_email": "macpato@millonario.com"
 }}'</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"contact"</span>: <span class="o">{</span>
     <span class="s2">"id"</span>: 50,
     <span class="s2">"name"</span>: <span class="s2">"Empresa Patito SA de CV"</span>,
@@ -621,7 +655,7 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
     <span class="s2">"shipping_address"</span>: null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Endpoint que permite editar un contacto existente.</p>
 <h3 id='argumentos-4'>Argumentos</h3>
 <table><thead>
@@ -639,15 +673,15 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>DELETE https://api.actiun.com/contacts/<span class="o">{</span>CONTACT_ID<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>DELETE https://api.actiun.com/contacts/<span class="o">{</span>CONTACT_ID<span class="o">}</span>
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts/50"</span> <span class="se">\</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/contacts/50"</span> <span class="se">\</span>
+  <span class="nt">-X</span> DELETE
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span>
+</code></pre></div>
 <p>Endpoint que te permite borrar un contacto. Si el cliente cuenta con información relacionada como facturas de ventas, facturas de gastos u otro documento, este no será eliminado en su totalidad solo será marcado como eliminado (soft delete) y no aparecerá en las busquedás principales.</p>
 <h3 id='argumentos-5'>Argumentos</h3>
 <table><thead>
@@ -721,19 +755,19 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/items/<span class="o">{</span>ITEM_ID<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/items/<span class="o">{</span>ITEM_ID<span class="o">}</span>
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items/1"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items/1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"item"</span>: <span class="o">{</span>
     <span class="s2">"id"</span>: 1,
     <span class="s2">"name"</span>: <span class="s2">"Bolígrafo de Punta Fina"</span>,
@@ -764,7 +798,7 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Endpoint que permite consultar un producto o servicio registrado.</p>
 <h3 id='argumentos'>Argumentos</h3>
 <table><thead>
@@ -782,19 +816,19 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/items
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/items
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"items"</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"id"</span>: 1,
@@ -827,7 +861,7 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
     <span class="o">}</span>
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Endpoint que permite consultar un listado de los contactos registrados.</p>
 <h3 id='argumentos-2'>Argumentos</h3>
 <table><thead>
@@ -845,26 +879,26 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/items
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/items
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada básica</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{ "item": {
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{ "item": {
    "name": "Lápiz No. 2",
    "price": 8.50,
    "product_key_code": "44121706",
    "unit_key_code": "H87"
   }}'</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"items"</span>: <span class="o">{</span>
     <span class="s2">"id"</span>: 50,
     <span class="s2">"name"</span>: <span class="s2">"Lápiz No. 2"</span>,
@@ -888,7 +922,7 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Endpoint que permite crear un nuevo contacto.</p>
 <h3 id='argumentos-3'>Argumentos</h3>
 <table><thead>
@@ -930,24 +964,24 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>PUT https://api.actiun.com/items/<span class="o">{</span>ITEM_ID<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>PUT https://api.actiun.com/items/<span class="o">{</span>ITEM_ID<span class="o">}</span>
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl https://api.actiun.com/items/50 <span class="se">\</span>
-    -X PUT <span class="se">\</span>
-    -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-    -d <span class="s1">'{ "item": {
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl https://api.actiun.com/items/50 <span class="se">\</span>
+    <span class="nt">-X</span> PUT <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{ "item": {
   "description": "Lapiz de Madera",
   "price": 9.5"
 }}'</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"item"</span>: <span class="o">{</span>
     <span class="s2">"id"</span>: 50,
     <span class="s2">"name"</span>: <span class="s2">"Lápiz No. 2"</span>,
@@ -970,7 +1004,7 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Endpoint que permite editar un contacto existente.</p>
 <h3 id='argumentos-4'>Argumentos</h3>
 <table><thead>
@@ -1016,15 +1050,15 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>DELETE https://api.actiun.com/items/<span class="o">{</span>ITEM_ID<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>DELETE https://api.actiun.com/items/<span class="o">{</span>ITEM_ID<span class="o">}</span>
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items/50"</span> <span class="se">\</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/items/50"</span> <span class="se">\</span>
+  <span class="nt">-X</span> DELETE
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span>
+</code></pre></div>
 <blockquote>
 <p>Resultado (204 No Content)</p>
 </blockquote>
@@ -1260,94 +1294,94 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/invoices/<span class="o">{</span>INVOICE_ID<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/invoices/<span class="o">{</span>INVOICE_ID<span class="o">}</span>
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/invoices/150"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/invoices/150"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74740</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"income"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13804"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Por definir"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">18.6574</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74740</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"income"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13804"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Por definir"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">18.6574</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-09T16:09:48.314-06:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-09T16:37:48.043-06:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-09T16:09:48.314-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-09T16:37:48.043-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pdf"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/pdf/f898dc15-06a1-4d83-9c9a-c8a127993ff3"</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/pdf/f898dc15-06a1-4d83-9c9a-c8a127993ff3"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xml"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/xml/f898dc15-06a1-4d83-9c9a-c8a127993ff3"</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xml"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/xml/f898dc15-06a1-4d83-9c9a-c8a127993ff3"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166707</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Servicios de organización de transportes"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEIGHT SCALING / PESAJE"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Actividad"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2251</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166707</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Servicios de organización de transportes"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEIGHT SCALING / PESAJE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Actividad"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2251</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"federal"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"federal"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"retentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="nl">"retentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"sat_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90E59622-FCCC-4838-A792-5916AB8C81AB"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sat_certificate_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00001000000403442064"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sat_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng=="</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cfd_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg=="</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stamped_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-09T16:37:46.000-06:00"</span><span class="w">
+    </span><span class="nl">"stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sat_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90E59622-FCCC-4838-A792-5916AB8C81AB"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sat_certificate_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00001000000403442064"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sat_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cfd_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stamped_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-09T16:37:46.000-06:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10819</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME SA DE CV"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XEXX010101000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"billing_address_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facturacion@acme.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bill_with_parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bill_with_shipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10819</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME SA DE CV"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XEXX010101000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billing_address_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facturacion@acme.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bill_with_parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bill_with_shipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"cfdi_use"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gastos en general"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G03"</span><span class="w">
+    </span><span class="nl">"cfdi_use"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gastos en general"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G03"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Endpoint que permite consultar una factura de venta registrada.</p>
 <h3 id='argumentos'>Argumentos</h3>
 <table><thead>
@@ -1365,101 +1399,101 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/invoices
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/invoices
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/invoices"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/invoices"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74787</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1300</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-12"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-12"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_offset_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"income"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">4500</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5220</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferencia electrónica"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4036"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MXN"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74787</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1300</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"due_offset_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"income"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">4500</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5220</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferencia electrónica"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4036"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MXN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:47.218-06:00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:53.544-06:00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:47.218-06:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:53.544-06:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pdf"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/pdf/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/pdf/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xml"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/xml/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xml"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/xml/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166822</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horas de Desarrollo de Página Web"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Desarrollo personalziado de páina web www.acme.com.mx"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">4500</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horas"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2300</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166822</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horas de Desarrollo de Página Web"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Desarrollo personalziado de páina web www.acme.com.mx"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">4500</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Horas"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2300</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"federal"</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"federal"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="s2">"retentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="nl">"retentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"sat_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90E59622-FCCC-4838-A792-5916AB8C81AB"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sat_certificate_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00001000000403442064"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sat_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng=="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"cfd_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg=="</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"stamped_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-10T18:30:00.000-06:00"</span><span class="w">
+      </span><span class="nl">"stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sat_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90E59622-FCCC-4838-A792-5916AB8C81AB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sat_certificate_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00001000000403442064"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sat_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng=="</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cfd_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg=="</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stamped_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-10T18:30:00.000-06:00"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10819</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME SA DE CV"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XEXX010101000"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"billing_address_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facturacion@acme.com"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"bill_with_parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"bill_with_shipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10819</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME SA DE CV"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XEXX010101000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"billing_address_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facturacion@acme.com"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"bill_with_parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"bill_with_shipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"cfdi_use"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gastos en general"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G03"</span><span class="w">
+      </span><span class="nl">"cfdi_use"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gastos en general"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G03"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Endpoint que permite consultar un listado de los contactos registrados.</p>
 <h3 id='argumentos-2'>Argumentos</h3>
 <table><thead>
@@ -1481,18 +1515,18 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <blockquote>
 <p>Definición</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/invoices
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/invoices
+</code></pre></div>
 <blockquote>
 <p>Ejemplo de llamada básica</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/invoices"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -H <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
-  -H <span class="s2">"Cache-Control: no-cache"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -H <span class="s2">"Postman-Token: 5e2c8505-26ce-4b1a-bb59-2cc58154bee1"</span> <span class="se">\</span>
-  -d <span class="s1">'{ "invoice": {
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/invoices"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Cache-Control: no-cache"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Postman-Token: 5e2c8505-26ce-4b1a-bb59-2cc58154bee1"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{ "invoice": {
     "date": "2018-03-12",
     "due_offset_days": "30",
     "client_id": 10819,
@@ -1503,89 +1537,89 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
     ]
 }}'</span>
 
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Resultado</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74787</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">13814</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-12"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"due_offset_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"income"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2552</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tarjeta de crédito"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8101"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MXN"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74787</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">13814</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-12"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"due_offset_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"income"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2552</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tarjeta de crédito"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8101"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MXN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:47.218-06:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:53.544-06:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:47.218-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T14:19:53.544-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pdf"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/pdf/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/pdf/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xml"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/xml/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xml"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.actiun.test/documents/xml/ff70b672-7b93-4295-adb8-77f94c68a529"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166822</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Memoria Ram"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAM de 1600mhz modelo DDR3"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pieza"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1400</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166822</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Memoria Ram"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RAM de 1600mhz modelo DDR3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">2200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pieza"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1400</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"federal"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"federal"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"retentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="nl">"retentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"sat_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90E59622-FCCC-4838-A792-5916AB8C81AB"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sat_certificate_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00001000000403442064"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sat_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng=="</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cfd_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg=="</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stamped_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-10T18:30:00.000-06:00"</span><span class="w">
+    </span><span class="nl">"stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sat_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90E59622-FCCC-4838-A792-5916AB8C81AB"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sat_certificate_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00001000000403442064"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sat_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gFaKe9/eqDTbSZ8jXLnKsRz3A0s4emWDptsBH5Ut64OiH8yGB+uvMUibqT2vJt1acAYTfLrCILDGfWnbOMoXyULYm00ocIRcfif8i8XS36aW69u/LXY0ZJbjw5WMtbBTlkMssIYNGFuwJo7rfljhbSTB0AkVAnRetAgKz0fseiJBY4+C2M0wbsniziVL7+FUaqL3whetP54GZ+1s1p3pBQnIp/l2/ctKx+Xv5mSif4/g45Nxg/vSLPjYeKIAJspctc8KHgSLLx6vxV+a9DRaO4yAyVaaMxQIGJnF8FyocU8TPi3HryHuLtrOdyyoxNaKdRjzhb7n0jx5YCUihMNMng=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cfd_stamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDLGVswAH7M2MmiTU1KIl2G4KjWZXkfb6U86TZ68z5x/pksDBOpk0OqW+iDFHMbbrGgqwmlPS97JDi5vCqogNLM1GELaY02O3HeOd6N76SA/FKAPHAprZJnbXaL3vCcIN0oIqvWszfyQ9L5vKSqHu9RtVkdZ1b6j+9PuQ7EWs8S8xrtdSI1+shwzyEFaVmU3atW2Ub9/Ltx6sqG3odpaDM9BycmmO2IRR8VH8xoi2BW9M5MHLvXIo1ouxx9KrNmggUjvVzQlwWXRfJYZrfs3GvXYNKSHxP91Qx6t4OlhQfhmCPFbwhE/A3t7C55xRqo237lab2TNizrOOPW0ZZPdBg=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stamped_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-10T18:30:00.000-06:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10819</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME SA DE CV"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XEXX010101000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"billing_address_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facturacion@acme.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bill_with_parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bill_with_shipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10819</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME SA DE CV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XEXX010101000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_address_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facturacion@acme.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bill_with_parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bill_with_shipping"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"cfdi_use"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gastos en general"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G03"</span><span class="w">
+    </span><span class="nl">"cfdi_use"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gastos en general"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"G03"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>Endpoint que permite crear una nueva factura.</p>
 <h3 id='argumentos-3'>Argumentos</h3>
 <table><thead>
@@ -1615,7 +1649,7 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <td style="text-align: left">decimal</td>
 </tr>
 <tr>
-<td style="text-align: right"><code>type_code</code> <br> string, opcional</td>
+<td style="text-align: right"><code>invoice_type_code</code> <br> string, opcional</td>
 <td style="text-align: left">Representa el tipo de factura que se desea emitir. El valor por defecto es <code>FACT</code>. Utiliza los siguientes valores: <code>FACT</code> - Factura, <code>ARR</code> - Recibo de arrendamiento, <code>DON</code> - Recibo de donativos, <code>HON</code> - Recibo de honorarios.</td>
 </tr>
 <tr>
@@ -1625,6 +1659,286 @@ Recuerda remplazar la llave {LLAVE_PRIVADA} con la tuya.
 <tr>
 <td style="text-align: right"><code>payment_type_code</code><br> string, opcional</td>
 <td style="text-align: left">Representa el método de pago de la factura. Admite los valores <code>PUE</code> para Pago en Una sola Exhibición y <code>PPD</code> para Pago en Parcialidades o Diferido. El valor por defecto es <code>PUE</code>.</td>
+</tr>
+</tbody></table>
+<h1 id='cotizaciones'>Cotizaciones</h1>
+<p>Las cotizaciones se pueden listar, consultar, crear como borrador y actualizar mientras estén en borrador o abiertas. El API no envía cotizaciones por correo, no las convierte en factura, no las cancela ni las elimina.</p>
+<h2 id='objeto-cotizacion'>Objeto Cotización</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code> <br> integer</td>
+<td>Identificador único de la cotización.</td>
+</tr>
+<tr>
+<td><code>status</code> <br> string</td>
+<td>Estado de la cotización (<code>drafted</code>, <code>opened</code>, <code>sent</code>, …). No se puede escribir desde el API.</td>
+</tr>
+<tr>
+<td><code>prefix</code> <br> string</td>
+<td>Serie de la cotización.</td>
+</tr>
+<tr>
+<td><code>number</code> <br> string</td>
+<td>Folio de la cotización.</td>
+</tr>
+<tr>
+<td><code>identification</code> <br> string</td>
+<td>Serie y folio combinados.</td>
+</tr>
+<tr>
+<td><code>date</code> <br> date</td>
+<td>Fecha de la cotización.</td>
+</tr>
+<tr>
+<td><code>due_at</code> <br> date</td>
+<td>Fecha de vigencia.</td>
+</tr>
+<tr>
+<td><code>description</code> <br> string</td>
+<td>Descripción.</td>
+</tr>
+<tr>
+<td><code>external_id</code> <br> string</td>
+<td>Identificador externo (por ejemplo, el ID de tu CRM).</td>
+</tr>
+<tr>
+<td><code>subtotal</code> / <code>total</code> <br> decimal</td>
+<td>Importes de la cotización.</td>
+</tr>
+<tr>
+<td><code>currency</code> <br> object</td>
+<td>Moneda (<code>code</code>, <code>symbol</code>, <code>exchange_rate</code>).</td>
+</tr>
+<tr>
+<td><code>client</code> <br> object</td>
+<td>Cliente de la cotización.</td>
+</tr>
+<tr>
+<td><code>line_items</code> <br> array</td>
+<td>Líneas (conceptos) de la cotización.</td>
+</tr>
+<tr>
+<td><code>attachments</code> <br> array</td>
+<td>Archivos adjuntos (PDF).</td>
+</tr>
+</tbody></table>
+<h2 id='listar-cotizaciones'>Listar Cotizaciones</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/quotes
+</code></pre></div>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/quotes?status=drafted&amp;order_field=date&amp;order_direction=DESC"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"quotes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"drafted"</span><span class="p">,</span><span class="w"> </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w"> </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w"> </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">1500.0</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Regresa las cotizaciones de tu empresa. El resultado es paginado (headers <code>Total</code>, <code>Per-Page</code> y <code>Link</code>).</p>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order_field</code> <br> string, opcional</td>
+<td><code>id</code>, <code>date</code>, <code>due_at</code>, <code>status</code> o <code>created_at</code>. Por defecto <code>created_at</code>.</td>
+</tr>
+<tr>
+<td><code>order_direction</code> <br> string, opcional</td>
+<td><code>ASC</code> o <code>DESC</code>. Por defecto <code>DESC</code>.</td>
+</tr>
+<tr>
+<td><code>q</code> / <code>number</code> <br> string, opcional</td>
+<td>Búsqueda por folio o identificación.</td>
+</tr>
+<tr>
+<td><code>client_id</code> <br> integer, opcional</td>
+<td>Filtra por cliente.</td>
+</tr>
+<tr>
+<td><code>external_id</code> <br> string, opcional</td>
+<td>Filtra por <code>external_id</code>.</td>
+</tr>
+<tr>
+<td><code>status</code> <br> string, opcional</td>
+<td>Filtra por estado (<code>drafted</code>, <code>opened</code>, <code>sent</code>, …).</td>
+</tr>
+</tbody></table>
+<h2 id='consultar-una-cotizacion'>Consultar una Cotización</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>GET https://api.actiun.com/quotes/<span class="o">{</span>QUOTE_ID<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/quotes/123"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"drafted"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-03"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-03"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Servicio de instalación"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crm-77"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">1500.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">1500.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MXN"</span><span class="p">,</span><span class="w"> </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w"> </span><span class="nl">"exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cliente Cotizaciones"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Instalación"</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1500.0</span><span class="p">,</span><span class="w"> </span><span class="nl">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">1500.0</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-03T02:50:00.000-06:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-03T02:50:00.000-06:00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Si la cotización no existe o no pertenece a tu empresa se regresa <code>404</code> con <code>{ &quot;errors&quot;: &quot;Cotización no encontrada&quot; }</code>.</p>
+<h2 id='crear-una-cotizacion'>Crear una Cotización</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>POST https://api.actiun.com/quotes
+</code></pre></div>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/quotes"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "quote": {
+      "client_id": 456,
+      "currency_code": "MXN",
+      "date": "2026-11-03",
+      "due_at": "2026-11-17",
+      "description": "Servicio de instalación",
+      "external_id": "crm-77",
+      "line_items": [
+        { "name": "Instalación", "quantity": 1, "price": 1500 }
+      ]
+    }
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Resultado: <code>201 Created</code> con el objeto <code>quote</code> (ver Consultar una Cotización).</p>
+</blockquote>
+
+<p>La cotización siempre se crea en borrador (<code>drafted</code>). Si omites <code>number</code>, el folio se toma de la serie de Cotizaciones de tu empresa.</p>
+
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>client_id</code> <br> integer, requerido</td>
+<td>Tu propia empresa o un contacto relacionado.</td>
+</tr>
+<tr>
+<td><code>currency_id</code> / <code>currency_code</code> <br> integer / string, opcional</td>
+<td>Moneda (por ejemplo <code>MXN</code>).</td>
+</tr>
+<tr>
+<td><code>exchange_rate</code> <br> decimal, condicional</td>
+<td>Requerido si la moneda no es <code>MXN</code>.</td>
+</tr>
+<tr>
+<td><code>date</code> / <code>due_at</code> <br> date, opcional</td>
+<td><code>due_at</code> debe ser igual o posterior a <code>date</code>.</td>
+</tr>
+<tr>
+<td><code>description</code> <br> string, opcional</td>
+<td>Descripción.</td>
+</tr>
+<tr>
+<td><code>external_id</code> <br> string, opcional</td>
+<td>Identificador externo.</td>
+</tr>
+<tr>
+<td><code>number</code> / <code>prefix</code> <br> string, opcional</td>
+<td>Folio y serie.</td>
+</tr>
+<tr>
+<td><code>payment_type_id</code> / <code>payment_method_id</code> / <code>payment_condition_id</code> <br> integer, opcional</td>
+<td>Datos de pago.</td>
+</tr>
+<tr>
+<td><code>line_items</code> <br> array, requerido</td>
+<td>Al menos una línea con <code>name</code>, <code>quantity</code> y <code>price</code>; opcionales <code>item_id</code>, <code>description</code>, <code>discount</code>, <code>units</code>, <code>taxes</code> y <code>retentions</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='actualizar-una-cotizacion'>Actualizar una Cotización</h2>
+<blockquote>
+<p>Definición</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>PATCH https://api.actiun.com/quotes/<span class="o">{</span>QUOTE_ID<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>Ejemplo de llamada</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.actiun.com/quotes/123"</span> <span class="se">\</span>
+  <span class="nt">-X</span> PATCH <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: {LLAVE_PRIVADA}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{ "quote": { "description": "Instalación y configuración" } }'</span>
+</code></pre></div>
+<p>Acepta los mismos parámetros que la creación (también <code>PUT</code>). Solo se pueden actualizar cotizaciones en borrador o abiertas; <code>status</code> no se puede modificar.</p>
+<h2 id='errores-de-cotizaciones'>Errores de Cotizaciones</h2>
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Respuesta</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>401</td>
+<td><code>{ &quot;errors&quot;: &quot;Not authenticated&quot; }</code></td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>{ &quot;errors&quot;: &quot;Cotización no encontrada&quot; }</code></td>
+</tr>
+<tr>
+<td>422 (validación)</td>
+<td><code>{ &quot;errors&quot;: { &quot;client_id&quot;: [&quot;no pertenece a esta empresa&quot;], &quot;line_items&quot;: [&quot;debes tener al menos 1 línea de captura&quot;] } }</code></td>
+</tr>
+<tr>
+<td>422 (no editable)</td>
+<td><code>{ &quot;errors&quot;: &quot;Solo se pueden actualizar cotizaciones en borrador o abiertas&quot; }</code></td>
 </tr>
 </tbody></table>
 <h1 id='errores'>Errores</h1>
